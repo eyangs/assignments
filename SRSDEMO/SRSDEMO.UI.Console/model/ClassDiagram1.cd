@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Course">
+    <Position X="4.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>gACEAAAAAAAAAAAEACACAQAAQAAAAAAAIAAAAAAAAAQ=</HashCode>
+      <FileName>Course.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Person" Collapsed="true">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAEAAAAAQQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Person.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Professor">
+    <Position X="0.5" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAQAAAAEAFAAAAAQAAEAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Professor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ScheduleOfClasses">
+    <Position X="11" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAgAQAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScheduleOfClasses.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Section">
+    <Position X="8.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAEAAQAAAMAPIAAUAQACABAAAgAQQEAAAAEAA=</HashCode>
+      <FileName>Section.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Student">
+    <Position X="2.5" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAAAAAAAAEAAAABQgQAAAAQQAAAAAiAAAACAA=</HashCode>
+      <FileName>Student.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Transcript">
+    <Position X="6.75" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAQAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Transcript.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TranscriptEntry">
+    <Position X="6.75" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAACAAAAAAAAAAABIEAAAA=</HashCode>
+      <FileName>TranscriptEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EnrollFlags" Collapsed="true">
+    <Position X="4.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAAAAAAAAAg=</HashCode>
+      <FileName>EnrollFlag.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,5 @@
+The compile command for the Chapter 16 version of 
+the SRS is the following:
+
+csc /out:SRS.exe *.cs /main:SRS
+
