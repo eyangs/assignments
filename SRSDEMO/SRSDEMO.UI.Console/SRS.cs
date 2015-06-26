@@ -212,7 +212,7 @@ namespace SRSDEMO.UI
             
             //使用display方法显示各个对象最终状态
             // Let's see if everything got set up properly
-            // by calling various display methods!
+            // by calling various display methods!12
 
             Console.WriteLine("====================");
             Console.WriteLine("Schedule of Classes:");
