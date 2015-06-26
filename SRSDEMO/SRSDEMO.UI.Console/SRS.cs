@@ -22,7 +22,7 @@ namespace SRSDEMO.UI
             Student s1, s2, s3;
             Course c1, c2, c3, c4, c5;
             Section sec1, sec2, sec3, sec4, sec5, sec6, sec7;
-
+             
             // 创建多个对象（可能调用不同的构造函数）
             // 通常从数据库或文件中读取数据加载对象到内存中
 
