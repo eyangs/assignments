@@ -16,6 +16,11 @@ namespace SRSDEMO.UI
         public static List<Course> courseCatalog; // Generic List of Courses
         static void Main(string[] args)
         {
+
+
+
+
+
             Professor p1, p2, p3;
             Student s1, s2, s3;
             Course c1, c2, c3, c4, c5;
