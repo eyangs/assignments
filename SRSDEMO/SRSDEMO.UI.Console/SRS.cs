@@ -241,7 +241,7 @@ namespace SRSDEMO.UI
             Console.WriteLine("");
             s3.Display();
 
-            //练习14.2
+            //练习14
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
             sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
@@ -251,10 +251,10 @@ namespace SRSDEMO.UI
             EnrollFlags result = sec2_1.Enroll(s1);
 
 
-            //题3：
+            
 
 
-            //题4：
+           
 
 
 
