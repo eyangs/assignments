@@ -30,7 +30,7 @@ namespace SRSDEMO.UI
             // Professors.
             // -----------
 
-            p1 = new Professor("Jacquie Barker", "123-45-6789",
+            p1f = new Professor("Jacquie Barker", "123-45-6789",
                                "Adjunct Professor", "Information Technology");
             p2 = new Professor("John Carson", "567-81-2345",
                                "Full Professor", "Chemistry");
