@@ -261,6 +261,7 @@ namespace SRSDEMO.UI
             Console.ReadKey();
         }
 
+ 
         public static void ReportStatus(EnrollFlags status)
         {
             if (status == EnrollFlags.SUCCESSFULLY_ENROLLED)
