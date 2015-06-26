@@ -10,6 +10,9 @@ namespace SRSDEMO.UI
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
+        //为扩展功能 新实例化一个类
+        public static ScheduleOfClasses scheduleOfClasses1 =
+                         new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -238,6 +241,23 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
+
+            //练习14.2
+            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
+            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            scheduleOfClasses1.AddSection(sec1);
+            scheduleOfClasses1.AddSection(sec2);
+            //题2：让s1选sec2
+            EnrollFlags result = sec2_1.Enroll(s1);
+
+
+            //题3：
+
+
+            //题4：
+
+
 
             Console.ReadKey();
         }
