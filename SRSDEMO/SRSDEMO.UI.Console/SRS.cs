@@ -10,7 +10,8 @@ namespace SRSDEMO.UI
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
-        //ceshi
+        public static ScheduleOfClasses scheduleOfClasses2 =
+                         new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -203,9 +204,9 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            sec1.PostGrade(s1, "B+");
             sec1.PostGrade(s3, "A");
-            sec2.PostGrade(s2, "B+");
+            sec2.PostGrade(s2, "D");
             sec7.PostGrade(s2, "A-");
 
             
@@ -239,7 +240,49 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
+            
+            //14.5的练习1
+            Section sec11, sec12, sec13, sec14, sec15, sec16, sec17;
+            //第二学期排课
+            sec11 = c1.ScheduleSection("Tu", "8:10 - 10:00 PM", "GOVT102", 32);
+            sec12 = c1.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT203", 33);
+            sec13 = c2.ScheduleSection("Tu", "4:10 - 6:00 PM", "GOVT106", 29);
+            sec14 = c2.ScheduleSection("Th", "6:10 - 8:00 PM", "SCI331", 28);
+            sec15 = c3.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT102", 24);
+            sec16 = c4.ScheduleSection("F", "4:10 - 6:00 PM", "SCI242", 20);
+            sec17 = c5.ScheduleSection("M", "4:10 - 6:00 PM", "ARTS26", 35);
+            //将第二学期的Section加入到选课列表scheduleOfClasses2中
+            scheduleOfClasses2.AddSection(sec11);
+            scheduleOfClasses2.AddSection(sec12);
+            scheduleOfClasses2.AddSection(sec13);
+            scheduleOfClasses2.AddSection(sec14);
+            scheduleOfClasses2.AddSection(sec15);
+            scheduleOfClasses2.AddSection(sec16);
+            scheduleOfClasses2.AddSection(sec17);
+            //设定每门课的老师
+            p1.AgreeToTeach(sec11);
+            p2.AgreeToTeach(sec12);
+            p3.AgreeToTeach(sec13);
+            p1.AgreeToTeach(sec14);
+            p3.AgreeToTeach(sec15);
+            p2.AgreeToTeach(sec16);
+            p1.AgreeToTeach(sec17);
 
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+            //模拟第二学期选课 s2选sec13
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              sec13.ToString());
+
+            //这个方法显示这个学生本次选课是否成功
+            ReportStatus(status);
+            ////让成功修完sec1的s1选修sec13
+            Console.WriteLine("Student " + s1.Name +
+                             " is attempting to enroll in " +
+                             sec13.ToString());
+
+            ReportStatus(status);
             Console.ReadKey();
         }
 
