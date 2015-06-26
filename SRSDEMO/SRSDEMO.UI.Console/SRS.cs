@@ -205,7 +205,8 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            //sec1.PostGrade(s1, "C+"); 修改此学生成绩为Z
+            sec1.PostGrade(s1, "Z");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
@@ -243,11 +244,80 @@ namespace SRSDEMO.UI
             s3.Display();
 
             //练习14.2
-            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            //--------------------------------------------------------
+            //题一，第一学期课程不及格时候选课
+            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5,sec2_6, sec2_7;
+
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            sec2_6 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241", 15);
+            sec2_7 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25", 40);
+
+            //将Section加入到选课列表中
+            // Add these to the Schedule of Classes.
+
+            scheduleOfClasses.AddSection(sec2_1);
+            scheduleOfClasses.AddSection(sec2_2);
+            scheduleOfClasses.AddSection(sec2_3);
+            scheduleOfClasses.AddSection(sec2_4);
+            scheduleOfClasses.AddSection(sec2_5);
+            scheduleOfClasses.AddSection(sec2_6);
+            scheduleOfClasses.AddSection(sec2_7);
+
+            //设定每门课的教师
+            // Recruit a professor to teach each of the sections.
+
+            p3.AgreeToTeach(sec2_1);
+            p2.AgreeToTeach(sec2_2);
+            p1.AgreeToTeach(sec2_3);
+            p3.AgreeToTeach(sec2_4);
+            p1.AgreeToTeach(sec2_5);
+            p2.AgreeToTeach(sec2_6);
+            p3.AgreeToTeach(sec2_7);
+
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+
+            //模拟学生选课
+            // Students drop/add courses.
+            //因学生课程C1未通过，课程C3要求先修课程C1，尝试选择课程C3，查看结果
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_3.ToString());
+
+            EnrollFlags status2 = sec2_3.Enroll(s1);
+
+
+            //这个方法显示这个学生本次选课是否成功
+            ReportStatus(status2);
+
+            //--------------------------------------------------------
+            //题二 已选课程再选
+
+
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+
+            //模拟学生选课
+            // Students drop/add courses.
+            //因学生s3课程C1通过，再次选择C1 查看结果
+            Console.WriteLine("Student " + s3.Name +
+                              " is attempting to enroll in " +
+                              sec2_1.ToString());
+
+            EnrollFlags status3 = sec2_1.Enroll(s3);
+
+
+            //这个方法显示这个学生本次选课是否成功
+            ReportStatus(status3);
+
+
+
+
+            
             //题2：让s1选sec2
             EnrollFlags result = sec2_1.Enroll(s1);
 
