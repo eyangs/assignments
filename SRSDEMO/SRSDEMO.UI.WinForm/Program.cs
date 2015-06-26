@@ -18,7 +18,7 @@ namespace SRSDEMO.UI.WinForm
             //  needs a CourseCatalog object to properly initialize and a 
             //  Faculty object needs a ScheduleOfClasses object.
 
-            //  Create a CourseCatalog object and read data from input files. 
+            //  Create a CourseCatalog object and read data from input files. dfdgfddfg
 
             CourseCatalog catalog = new CourseCatalog("CourseCatalog.dat", "Prerequisites.dat");
             catalog.ReadCourseCatalogData();
