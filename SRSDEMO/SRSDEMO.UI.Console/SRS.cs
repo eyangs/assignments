@@ -17,6 +17,7 @@ namespace SRSDEMO.UI
         public static List<Student> studentBody;  // Generic List of Students
         public static List<Course> courseCatalog; // Generic List of Courses
         static void Main(string[] args)
+            123
         {
             Professor p1, p2, p3;
             Student s1, s2, s3;
