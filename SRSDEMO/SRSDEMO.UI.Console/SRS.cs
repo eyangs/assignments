@@ -241,6 +241,10 @@ namespace SRSDEMO.UI
 
             Console.ReadKey();
         }
+        
+        
+        int i = 1;
+
 
         public static void ReportStatus(EnrollFlags status)
         {
