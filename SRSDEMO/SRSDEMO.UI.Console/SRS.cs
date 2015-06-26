@@ -249,7 +249,7 @@ namespace SRSDEMO.UI
             scheduleOfClasses1.AddSection(sec2);
             //题2：让s1选sec2
             EnrollFlags result = sec2_1.Enroll(s1);
-
+            //helle word
 
             //题3：
 
