@@ -8,6 +8,7 @@ namespace SRSDEMO.UI
     class SRS
     {
        //课程列表
+        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
         public static ScheduleOfClasses scheduleOfClasses1 =
