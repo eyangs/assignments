@@ -241,11 +241,11 @@ namespace SRSDEMO.UI
 
             Console.ReadKey();
         }
-        
-        
-        int i = 1;
 
-
+        public void shiyan()
+        {
+            Console.WriteLine("上交是否成功");
+        }
         public static void ReportStatus(EnrollFlags status)
         {
             if (status == EnrollFlags.SUCCESSFULLY_ENROLLED)
