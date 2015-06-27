@@ -111,11 +111,15 @@ public class Professor : Person {
 
       for (int i = 0; i < Teaches.Count; i++)
       {
-          if (Teaches[i].DayOfWeek == s.DayOfWeek)
+          if (Teaches[i].OfferedIn == s.OfferedIn)
           {
-              if (Teaches[i].TimeOfDay == s.TimeOfDay)
+              if (Teaches[i].DayOfWeek == s.DayOfWeek)
               {
-                  isSameTime = false;
+                  if (Teaches[i].TimeOfDay == s.TimeOfDay)
+                  {
+                      isSameTime = false;
+                  }
+                  else continue;
               }
               else continue;
           }
