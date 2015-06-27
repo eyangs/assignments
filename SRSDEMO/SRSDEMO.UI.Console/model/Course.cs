@@ -77,7 +77,14 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+    if(this != c){
+        Prerequisites.Add(c);     
+    }
+    else
+    {
+        Console.WriteLine("课程本身不能是自己的先修课！！！"); 
+    }
+    
   }
 
   //**************************************
