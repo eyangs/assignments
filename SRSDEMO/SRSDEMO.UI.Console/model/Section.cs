@@ -276,6 +276,21 @@ public class Section {
 
     return true;
   }
+
+  //练习6，修改成绩的方法
+  public void EraseGrade(Student s,string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == true)
+      {
+          s.Transcript.TranscriptEntries.Remove(AssignedGrades[s]);
+
+          AssignedGrades.Remove(s);
+
+          TranscriptEntry te = new TranscriptEntry(s, grade, this);
+
+          AssignedGrades.Add(s, te);
+      } 
+  }
 	
   //**************************************
   //
