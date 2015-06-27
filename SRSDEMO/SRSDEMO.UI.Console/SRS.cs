@@ -297,6 +297,7 @@ namespace SRSDEMO.UI
 
         ReportStatus(status1);
 
+     
         //第二学期课表
         Console.WriteLine("");
         Console.WriteLine("====================");
