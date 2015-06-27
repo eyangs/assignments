@@ -263,6 +263,15 @@ namespace SRSDEMO.UI
         scheduleOfClasses2.AddSection(sec24);
         scheduleOfClasses2.AddSection(sec25);
 
+        //设定每门课的教师
+        
+        p3.AgreeToTeach(sec21);
+        p2.AgreeToTeach(sec22);
+        p1.AgreeToTeach(sec23);
+        p3.AgreeToTeach(sec24);
+        p1.AgreeToTeach(sec25);
+        
+
         Console.WriteLine("\n The second semester! \n");
 
         //模拟学生第二学期选课
