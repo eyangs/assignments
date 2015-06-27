@@ -106,10 +106,27 @@ public class Professor : Person {
 	
   //**************************************
   //
+    
+   //题3：一位教授不能在同一天/同一时刻教两门课
+
   public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
+
+    foreach(Section s1 in Teaches){
+        if (s == s1)
+        {
+            Console.WriteLine("一位教授不能在同一天/同一时刻教两门课!");
+        }
+        else {
+            Teaches.Add(s);
+            s.Instructor = this;
+        }
+    
+    
+    }
+      
+    
 
     // We need to link this bidirectionally.
-    s.Instructor = this;
+    
   }
 }
