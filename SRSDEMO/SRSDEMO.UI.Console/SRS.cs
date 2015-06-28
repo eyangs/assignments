@@ -7,9 +7,11 @@ namespace SRSDEMO.UI
 {
     class SRS
     {
-       //课程列表
+        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
+        public static ScheduleOfClasses scheduleOfClasses1 =
+                         new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -202,12 +204,12 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            sec1.PostGrade(s1, "D");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
 
-            
+
             //使用display方法显示各个对象最终状态
             // Let's see if everything got set up properly
             // by calling various display methods!
@@ -239,7 +241,36 @@ namespace SRSDEMO.UI
             Console.WriteLine("");
             s3.Display();
 
-            //3333333ddd
+            //练习14.5
+            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            scheduleOfClasses1.AddSection(sec2_1);
+            scheduleOfClasses1.AddSection(sec2_2);
+            scheduleOfClasses1.AddSection(sec2_3);
+            scheduleOfClasses1.AddSection(sec2_4);
+            scheduleOfClasses1.AddSection(sec2_5);
+            //题1.1：让s1选sec2_3
+            
+            //题1.2：让s2选sec2_1
+            EnrollFlags result = sec2_1.Enroll(s2);
+
+
+            //题2：课程不能把自己设置为先修课程
+
+
+            //题3：同一个教授在同一天同一时刻教授两门课
+
+            //题4：不出现重复Section编号
+
+            //题5：同时选修一门课程及其先修课程
+
+            //题6：创建EraseGrade方法，让教授能够更改学生成绩
+
+
 
             Console.ReadKey();
         }
