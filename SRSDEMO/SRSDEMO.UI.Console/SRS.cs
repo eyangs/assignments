@@ -251,7 +251,7 @@ namespace SRSDEMO.UI
             sec15 = c3.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT102", 24);
             sec16 = c4.ScheduleSection("F", "4:10 - 6:00 PM", "SCI242", 20);
             sec17 = c5.ScheduleSection("M", "4:10 - 6:00 PM", "ARTS26", 35);
-            //将第二学期的Section加入到选课列表scheduleOfClasses2中 ceshia
+            //将第二学期的Section加入到选课列表scheduleOfClasses2中 ceshiaa
             scheduleOfClasses2.AddSection(sec11);
             scheduleOfClasses2.AddSection(sec12);
             scheduleOfClasses2.AddSection(sec13);
