@@ -206,7 +206,7 @@ namespace SRSDEMO.UI
 
             sec1.PostGrade(s1, "B+");
             sec1.PostGrade(s3, "A");
-            sec2.PostGrade(s2, "D");
+            sec2.PostGrade(s2, "F");
             sec7.PostGrade(s2, "A-");
 
             
@@ -251,7 +251,7 @@ namespace SRSDEMO.UI
             sec15 = c3.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT102", 24);
             sec16 = c4.ScheduleSection("F", "4:10 - 6:00 PM", "SCI242", 20);
             sec17 = c5.ScheduleSection("M", "4:10 - 6:00 PM", "ARTS26", 35);
-            //将第二学期的Section加入到选课列表scheduleOfClasses2中 ceshiaaa
+            //将第二学期的Section加入到选课列表scheduleOfClasses2中 
             scheduleOfClasses2.AddSection(sec11);
             scheduleOfClasses2.AddSection(sec12);
             scheduleOfClasses2.AddSection(sec13);
@@ -270,18 +270,18 @@ namespace SRSDEMO.UI
 
             Console.WriteLine("Student registration has begun!");
             Console.WriteLine("");
-            //模拟第二学期选课 s2选sec13
+            //模拟第二学期选课 上面已将s2的Sec成绩改为"F"，使之不及格，现在让s2选修sec13（应该不满足条件）
             Console.WriteLine("Student " + s2.Name +
                               " is attempting to enroll in " +
                               sec13.ToString());
-
+            status = sec13.Enroll(s2);
             //这个方法显示这个学生本次选课是否成功
             ReportStatus(status);
-            ////让成功修完sec1的s1选修sec13
+            //让成功修完sec1的s1选修sec13（应该成功）
             Console.WriteLine("Student " + s1.Name +
                              " is attempting to enroll in " +
                              sec13.ToString());
-
+            status = sec13.Enroll(s1);
             ReportStatus(status);
             Console.ReadKey();
         }
