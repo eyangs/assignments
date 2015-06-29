@@ -15,7 +15,7 @@ public class Course {
 
   public Course(string cNo, string cName, double credits) {
 
-    //  Initialize property values.
+    //  Initialize property values.//≤‚ ‘
 
     CourseNumber = cNo;
     CourseName = cName;
