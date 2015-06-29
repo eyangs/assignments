@@ -7,7 +7,8 @@
 using System;
 using System.Collections.Generic;
 
-public class Professor : Person {
+public class Professor : Person 
+{
 
   //----------------
   // Constructor(s).
@@ -103,11 +104,20 @@ public class Professor : Person {
     }
   }
 	
-  //**************************************
-  //	
-  public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
-
+  //14.5练习3 若没有section，则添加，若已有，添加一个判断，
+  //遍历Teaches已有的section,只有没有的Teaches才能添加	
+  public void AgreeToTeach(Section s) 
+  {
+      Boolean l = false;
+      if (Teaches.Count == 0)｛
+      Teaches.Add(s);
+      ｝
+      else {for (int i=0; i<Teaches.Count; i++) {
+              if(Teaches[i].TimeOfDay==s.TimeOfDay &&Teaches[i].DayOfWeek==s.DayOfWeek)
+                  l =true;
+              break;
+              }
+          if(l=false);
     // We need to link this bidirectionally.
     s.Instructor = this;
   }
