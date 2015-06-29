@@ -103,13 +103,40 @@ public class Professor : Person {
       }
     }
   }
-	
-  //**************************************
-  //
-  public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
 
-    // We need to link this bidirectionally.
-    s.Instructor = this;
+  //**************************************
+  //题3：保证一位教授不能再同一天同一时刻教两门课
+  public void AgreeToTeach(Section s)
+  {
+      bool isSameTime = true;
+
+      for (int i = 0; i < Teaches.Count; i++)
+      {
+          if (Teaches[i].OfferedIn == s.OfferedIn)
+          {
+              if (Teaches[i].DayOfWeek == s.DayOfWeek)
+              {
+                  if (Teaches[i].TimeOfDay == s.TimeOfDay)
+                  {
+                      isSameTime = false;
+                  }
+                  else continue;
+              }
+              else continue;
+          }
+          else continue;
+      }
+
+      if (isSameTime)
+      {
+          Teaches.Add(s);
+          // We need to link this bidirectionally.
+          s.Instructor = this;
+      }
+      else
+      {
+          Console.WriteLine("一位教授不能在同一天的同一时刻教授两门课！");
+      }
+
   }
 }
