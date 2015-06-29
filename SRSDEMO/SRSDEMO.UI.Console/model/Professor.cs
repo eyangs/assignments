@@ -105,11 +105,35 @@ public class Professor : Person {
   }
 	
   //**************************************
-  //
+  //第三题，确保教授不能在同一天同一时间教授两门课
   public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
+      bool access = true;      
+      //循环检查此课程和将添加课程时间是否相同
+      for (int i = 0; i < Teaches.Count; i++)
+      {
+          //如果时间相同
+          if (string.Equals(s.TimeOfDay , Teaches[i].TimeOfDay)) 
+          {
+              //则不可选
+              access = false;
+              Console.WriteLine(s + "和" + Teaches[i] +"的时间想冲突");
+              Console.WriteLine("Tips："+ this.Name + "不能在同一时间教授两门课程！！！");
+          }
+          break;
+      }
+      //循环结束，若access值仍为false，则表示没有时间冲突，可以添加
+      if(access)
+      {
+          Teaches.Add(s);
+          // We need to link this bidirectionally.
+          s.Instructor = this;
+
+      }     
+
+
+    //Teaches.Add(s);
 
     // We need to link this bidirectionally.
-    s.Instructor = this;
+    //s.Instructor = this;
   }
 }
