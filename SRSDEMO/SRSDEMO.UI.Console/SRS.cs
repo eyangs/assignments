@@ -128,7 +128,7 @@ namespace SRSDEMO.UI
             Console.WriteLine("Student registration has begun!");
             Console.WriteLine("");
 
-            //模拟学生选课
+            //模拟学生选课//测试
             // Students drop/add courses.
 
             Console.WriteLine("Student " + s1.Name +
@@ -205,6 +205,7 @@ namespace SRSDEMO.UI
 
             sec1.PostGrade(s1, "B+");
             sec1.PostGrade(s3, "A");
+            //将S2的SEC2成绩改为“F”，使其不及格
             sec2.PostGrade(s2, "F");
             sec7.PostGrade(s2, "A-");
 
@@ -240,7 +241,7 @@ namespace SRSDEMO.UI
             Console.WriteLine("");
             s3.Display();
             
-            //14.5的练习1
+         //14.5的练习1
             Section sec11, sec12, sec13, sec14, sec15, sec16, sec17;
             //第二学期排课
             sec11 = c1.ScheduleSection("Tu", "8:10 - 10:00 PM", "GOVT102", 32);

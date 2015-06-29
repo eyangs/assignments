@@ -77,7 +77,10 @@ public class Course {
   //**************************************
   //	
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+      if (CourseName != c.CourseName)
+      { 
+          Prerequisites.Add(c); 
+      }
   }
 
   //**************************************
