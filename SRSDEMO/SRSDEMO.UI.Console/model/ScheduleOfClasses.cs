@@ -7,63 +7,68 @@
 using System;
 using System.Collections.Generic;
 
-public class ScheduleOfClasses {
+public class ScheduleOfClasses
+{
 
-  //----------------
-  // Constructor(s).
-  //----------------
+    //----------------
+    // Constructor(s).
+    //----------------
 
-  public ScheduleOfClasses(string semester) {
-    Semester = semester;
-		
-    // Create a new Dictionary.
+    public ScheduleOfClasses(string semester)
+    {
+        Semester = semester;
 
-    SectionsOffered = new Dictionary<string, Section>();
-  }
+        // Create a new Dictionary.
 
-  //-------------------------------
-  // Auto-implemented properties.
-  //-------------------------------
-
-  public string Semester { get; set; }
-
-  // This Dictionary stores Section object references, using
-  // a String concatenation of course no. and section no. as the
-  // key, e.g., "MATH101 - 1".
-
-  public Dictionary<string, Section> SectionsOffered { get; set; }
-
-  //-----------------------------
-  // Miscellaneous other methods.
-  //-----------------------------
-
-  // Used for testing purposes.
-	
-  public void Display() {
-    Console.WriteLine("Schedule of Classes for "+this.Semester);
-    Console.WriteLine("");
-
-    // Step through the Dictionary and display all entries.
-
-    foreach ( KeyValuePair<string, Section> kv in SectionsOffered ) {
-      Section s = kv.Value;
-      s.Display();
-      Console.WriteLine("");
+        SectionsOffered = new Dictionary<string, Section>();
     }
-  }
 
-  //**************************************
-  //
-  public void AddSection(Section s) {
-    // We formulate a key by concatenating the course no.
-    // and section no., separated by a hyphen.
+    //-------------------------------
+    // Auto-implemented properties.
+    //-------------------------------
 
-    string key = s.RepresentedCourse.CourseNumber+ 
-                 " - "+s.SectionNumber;
-    SectionsOffered.Add(key, s);
+    public string Semester { get; set; }
 
-    // Bidirectionally connect the ScheduleOfClasses back to the Section.
+    // This Dictionary stores Section object references, using
+    // a String concatenation of course no. and section no. as the
+    // key, e.g., "MATH101 - 1".
 
-    s.OfferedIn = this;
-  }
+    public Dictionary<string, Section> SectionsOffered { get; set; }
+
+    //-----------------------------
+    // Miscellaneous other methods.
+    //-----------------------------
+
+    // Used for testing purposes.
+
+    public void Display()
+    {
+        Console.WriteLine("Schedule of Classes for " + this.Semester);
+        Console.WriteLine("");
+
+        // Step through the Dictionary and display all entries.
+
+        foreach (KeyValuePair<string, Section> kv in SectionsOffered)
+        {
+            Section s = kv.Value;
+            s.Display();
+            Console.WriteLine("");
+        }
+    }
+
+    //**************************************
+    //
+    public void AddSection(Section s)
+    {
+        // We formulate a key by concatenating the course no.
+        // and section no., separated by a hyphen.
+
+        string key = s.RepresentedCourse.CourseNumber +
+                     " - " + s.SectionNumber;
+        SectionsOffered.Add(key, s);
+
+        // Bidirectionally connect the ScheduleOfClasses back to the Section.
+
+        s.OfferedIn = this;
+    }
 }
