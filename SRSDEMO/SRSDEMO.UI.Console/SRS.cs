@@ -23,7 +23,7 @@ namespace SRSDEMO.UI
             Course c1, c2, c3, c4, c5;
             Section sec1, sec2, sec3, sec4, sec5, sec6, sec7;
 
-            // 创建多个对象（可能调用不同的构造函数）qqqqqqqq
+            // 创建多个对象（可能调用不同的构造函数）
             // 通常从数据库或文件中读取数据加载对象到内存中
 
             // -----------
@@ -86,6 +86,7 @@ namespace SRSDEMO.UI
             c2.AddPrerequisite(c1);
             c3.AddPrerequisite(c2);
             c4.AddPrerequisite(c3);
+            c2.AddPrerequisite(c2);//测试是否可以把它自己设为先修课程。题2
 
             // ---------
             // Sections.
@@ -114,12 +115,14 @@ namespace SRSDEMO.UI
             scheduleOfClasses.AddSection(sec5);
             scheduleOfClasses.AddSection(sec6);
             scheduleOfClasses.AddSection(sec7);
+          c1.CancelSection(sec1);
 
             //设定每门课的教师
             // Recruit a professor to teach each of the sections.
 
             p3.AgreeToTeach(sec1);
             p2.AgreeToTeach(sec2);
+            p2.AgreeToTeach(sec4);//测试时间冲突----第三题
             p1.AgreeToTeach(sec3);
             p3.AgreeToTeach(sec4);
             p1.AgreeToTeach(sec5);
@@ -204,12 +207,16 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            //sec1.PostGrade(s1, "C+");
+            sec1.PostGrade(s1, "I");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
-            sec7.PostGrade(s2, "A-");
+           sec7.PostGrade(s2, "A-");
+           sec7.EraseGrade(s2, "A");//测试更改学生成绩
 
-            
+           //Console.WriteLine("");
+           //s2.Display();
+           //Console.ReadKey();
             //使用display方法显示各个对象最终状态
             // Let's see if everything got set up properly
             // by calling various display methods!
@@ -241,22 +248,41 @@ namespace SRSDEMO.UI
             Console.WriteLine("");
             s3.Display();
 
-            //练习14.2
+
+        
+            //练习14.5第一题
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
-            //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
-
-
-            //题3：
-
-
-            //题4：
-
-
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            scheduleOfClasses1.AddSection(sec2_1);
+            scheduleOfClasses1.AddSection(sec2_2);
+            scheduleOfClasses.AddSection(sec2_3);
+            scheduleOfClasses.AddSection(sec2_4);
+            scheduleOfClasses.AddSection(sec2_5);
+            p3.AgreeToTeach(sec2_1);
+            p2.AgreeToTeach(sec2_2);
+            p1.AgreeToTeach(sec2_3);
+            p3.AgreeToTeach(sec2_4);
+            p1.AgreeToTeach(sec2_5);           
+           Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+            //模拟学生选课
+            // s1第一学期C1课程不及格，第二学期选择C2课程
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_3.ToString());
+            EnrollFlags result = sec2_3.Enroll(s1);
+            ReportStatus(result);
+            //让s3的C1课程修完，再次选C1
+            Console.WriteLine("Student " + s3.Name +
+                             " is attempting to enroll in " +
+                             sec2_2.ToString());
+ 
+           result = sec2_2.Enroll(s3);
+            ReportStatus(result);
 
             Console.ReadKey();
         }
@@ -279,6 +305,12 @@ namespace SRSDEMO.UI
             {
                 Console.WriteLine("outcome:  SECTION_FULL");
             }
+            else if (status == EnrollFlags.PREREQ_and_now)
+            {
+                Console.WriteLine("outcome:   PREREQ_and_now");
+            }
+
+
         }
     }
 }

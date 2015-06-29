@@ -77,7 +77,11 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+    int  result;//第二题
+      result = String.Compare(c.CourseName, this.CourseName);
+      if (result != 0)
+          Prerequisites.Add(c);
+      else { Console.WriteLine(c+"不能把它自己定为先修课程"); }
   }
 
   //**************************************
@@ -92,17 +96,27 @@ public class Course {
   }
 
   //******************************************************************
-  //
+  public static int i = 0;
   public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    Section s = new Section(OfferedAsSection.Count + 1, 
+    Section s = new Section(i++, 
 				day, time, this, room, capacity);
-		
+     //第四题使课程的section不重复
     // ... and then add it to the List
     OfferedAsSection.Add(s);
-		
-    return s;
+    return s;}
+    //第四题
+  public void CancelSection(Section s)
+  {
+      if (OfferedAsSection.Contains(s))
+      {
+          OfferedAsSection.Remove(s);//将某课程的排课情况从列表中删除
+          Console.WriteLine(s + "已经从选课列表中删除");
+
+      }
+      
+
   }
 }
