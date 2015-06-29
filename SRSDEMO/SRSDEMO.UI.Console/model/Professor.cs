@@ -118,7 +118,8 @@ public class Professor : Person
     }
 
 
-    //练习3 .还没就有section直接添加，有就要添加判断，遍历Teaches已有的section,只有没有该时段内的Teaches才能添加  
+    //练习3 .还没有section直接添加，有就要添加判断，遍历Teaches已有的section,只有没有该时段内的Teaches才能添加
+  
     public void AgreeToTeach(Section s)
     {
         Boolean l = false;
