@@ -82,7 +82,6 @@ namespace SRSDEMO.UI
             courseCatalog.Add(c5);
 
             // 建立课程间的先修关系 (c1 => c2 => c3 => c4).
-
             c2.AddPrerequisite(c1);
             c3.AddPrerequisite(c2);
             c4.AddPrerequisite(c3);
