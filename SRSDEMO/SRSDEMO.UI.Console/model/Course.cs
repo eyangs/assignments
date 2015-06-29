@@ -74,7 +74,12 @@ public class Course {
     return CourseNumber + ":  "+CourseName;
   }
 
-  //**************************************
+  //Ôö¼ÓIFÅĞ¶Ï
+    public void AddPrerequisite(Course c) 
+    {
+        if(c.CourseNumber!=this.CourseNumber)
+            Prerequisites.Add(c);
+    }
   //
   public void AddPrerequisite(Course c) {
     Prerequisites.Add(c);
