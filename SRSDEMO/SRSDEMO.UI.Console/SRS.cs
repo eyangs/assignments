@@ -22,7 +22,7 @@ namespace SRSDEMO.UI
             Student s1, s2, s3;
             Course c1, c2, c3, c4, c5;
             Section sec1, sec2, sec3, sec4, sec5, sec6, sec7;
-
+        
             // 创建多个对象（可能调用不同的构造函数）
             // 通常从数据库或文件中读取数据加载对象到内存中
 
@@ -103,6 +103,7 @@ namespace SRSDEMO.UI
             sec5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
             sec6 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241", 15);
             sec7 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25", 40);
+       
 
             //将Section加入到选课列表中
             // Add these to the Schedule of Classes.
@@ -242,21 +243,29 @@ namespace SRSDEMO.UI
             s3.Display();
 
             //练习14.2
+            //增加第二学期的课程
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+         
+
             scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
+            scheduleOfClasses1.AddSection(sec2); 
             //题2：让s1选sec2
             EnrollFlags result = sec2_1.Enroll(s1);
-
-
-            //题3：
-
-
-            //题4：
-
-
+            //修改s1的成绩，使之不及格
+             sec1.PostGrade(s1, "D");
+            //尝试选修有先修课程的第二学期课程
+             Console.WriteLine("Student " + s1.Name + " is attempting to enroll in " + sec2_2.ToString());
+             status = sec2_2.Enroll(s1);
+             ReportStatus(status);
+             Console.WriteLine("Student " + s2.Name + " is attempting to enroll in " + sec2_2.ToString());
+             status = sec2_2.Enroll(s2);
+             ReportStatus(status);
+            
 
             Console.ReadKey();
         }
