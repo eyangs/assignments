@@ -128,7 +128,7 @@ namespace SRSDEMO.UI
             Console.WriteLine("Student registration has begun!");
             Console.WriteLine("");
 
-            //模拟学生选课//测试
+            //模拟学生选课
             // Students drop/add courses.
 
             Console.WriteLine("Student " + s1.Name +

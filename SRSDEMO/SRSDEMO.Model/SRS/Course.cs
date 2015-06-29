@@ -75,12 +75,10 @@ public class Course {
   }
 
   //**************************************
-  //	
+  //14.5练习2，用if语句判断，c的课程号与当前的课程号是否相同，不同时才执行操作	//ceshi
   public void AddPrerequisite(Course c) {
-      if (CourseName != c.CourseName)
-      { 
+      if (c.CourseNumber != this.CourseNumber)
           Prerequisites.Add(c); 
-      }
   }
 
   //**************************************
