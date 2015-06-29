@@ -36,7 +36,7 @@ public class Course {
   public double Credits { get; set; }
   public List<Section> OfferedAsSection { get; set; }
   public List<Course> Prerequisites { get; set; }
-
+  public static int SectionNumber { get; set; }
   //-----------------------------
   // Miscellaneous other methods.
   //-----------------------------
@@ -95,14 +95,15 @@ public class Course {
       return false;
     }
   }
-
-  //******************************************************************
   //
-  public Section ScheduleSection(string day, string time, string room,
+  
+    
+    //改正ScheduleStion的错误逻辑
+    public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    Section s = new Section(OfferedAsSection.Count + 1, 
+       Section s = new Section(SectionNumber + 1, 
 				day, time, this, room, capacity);
 		
     // ... and then add it to the List
@@ -110,4 +111,11 @@ public class Course {
 		
     return s;
   }
+    //增加取消section的方法
+    public bool CancelSection(Section s)
+    {
+        this.OfferedAsSection.Remove(s);
+        return true;
+    }
 }
+
