@@ -106,19 +106,26 @@ public class Professor : Person
 	
   //14.5练习3 若没有section，则添加，若已有，添加一个判断，
   //遍历Teaches已有的section,只有没有的Teaches才能添加	
-  public void AgreeToTeach(Section s) 
+  public void AgreeToTeach(Section s)
   {
+      //确保一个教授不能在同一天/同一时刻教第二门课
       Boolean l = false;
-      if (Teaches.Count == 0)｛
-      Teaches.Add(s);
-      ｝
-      else {for (int i=0; i<Teaches.Count; i++) {
-              if(Teaches[i].TimeOfDay==s.TimeOfDay &&Teaches[i].DayOfWeek==s.DayOfWeek)
-                  l =true;
+      if (Teaches.Count == 0)
+      {
+          Teaches.Add(s);
+      }
+      else
+      {
+          for (int i = 0; i < Teaches.Count; i++)
+          {
+              if (Teaches[i].TimeOfDay == s.TimeOfDay && Teaches[i].DayOfWeek == s.DayOfWeek)
+                  l = true;
               break;
-              }
-          if(l=false);
-    // We need to link this bidirectionally.
-    s.Instructor = this;
+          }
+          if (l == false)
+              Teaches.Add(s);
+          // We need to link this bidirectionally.
+          s.Instructor = this;
+      }
   }
 }
