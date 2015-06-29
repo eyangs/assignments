@@ -106,3 +106,20 @@ public class Course {
     return s;
   }
 }
+
+//练习4
+public void CancelSection(Section s)
+{
+//课程从选课项里移除
+      OfferedAsSection.Remove(s);
+      //选课项从选课表里移除
+      s.OfferedIn.SectionsOffered.Remove(s.RepresentedCourse.CourseNumber +
+                 " - " + s.SectionNumber);
+
+      Console.WriteLine("课程已移出选课表！");
+
+  }
+
+
+ 
+}
