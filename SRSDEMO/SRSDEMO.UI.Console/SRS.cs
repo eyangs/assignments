@@ -10,6 +10,8 @@ namespace SRSDEMO.UI
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
+        public static ScheduleOfClasses scheduleOfClasses1 =
+                        new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -238,6 +240,58 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
+
+            //练习14.2
+            Section sect1, sect2, sect3, sect4, sect5;
+
+            sect1 = c1.ScheduleSection("M", "8:20 - 10:10 PM", "GOVT101", 30);
+            sect2 = c1.ScheduleSection("W", "6:20 - 8:10 PM", "GOVT202", 30);
+            sect3 = c2.ScheduleSection("Th", "4:20 - 6:10 PM", "GOVT105", 25);
+            sect4 = c2.ScheduleSection("Tu", "6:20 - 8:10 PM", "SCI330", 25);
+            sect5 = c3.ScheduleSection("M", "6:20 - 8:10 PM", "GOVT101", 20);
+
+            scheduleOfClasses1.AddSection(sect1);
+            scheduleOfClasses1.AddSection(sect2);
+            scheduleOfClasses1.AddSection(sect3);
+            scheduleOfClasses1.AddSection(sect4);
+            scheduleOfClasses1.AddSection(sect5);
+
+            //设定每门课的教师
+
+            p3.AgreeToTeach(sect1);
+            p2.AgreeToTeach(sect2);
+            p1.AgreeToTeach(sect3);
+            p3.AgreeToTeach(sect4);
+            p1.AgreeToTeach(sect5);
+
+            Console.WriteLine("\n The second semester! \n");
+
+            //题1：让S2的课程为不及格
+            sec7.PostGrade(s2, "D");
+            // 让S2申请第二学期课程
+            EnrollFlags result = sect3.Enroll(s2);
+            // 尝试为修完第一学期的学生申请第二学期课程
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sect1.ToString());
+
+            EnrollFlags result2 = sect1.Enroll(s1);
+
+            ReportStatus(result2);
+
+            Console.WriteLine("");
+
+            //学生s2的课程c2第一学期的成绩是B+，课程通过，s2可以选择课程c3
+
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              sect3.ToString());
+
+            result2 = sect3.Enroll(s2);
+
+            ReportStatus(result2);
+
+            Console.WriteLine("");
 
             Console.ReadKey();
         }
