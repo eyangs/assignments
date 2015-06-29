@@ -257,8 +257,7 @@ namespace SRSDEMO.UI
             scheduleOfClasses2.AddSection(sec2_4);
             scheduleOfClasses2.AddSection(sec2_5);
 
-            //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
+         
 
 
             //练习3：设定每门课的教师
@@ -272,7 +271,7 @@ namespace SRSDEMO.UI
 
             //模拟学生第二学期选课
             
-            //将学生s1的课程c1第一学期的成绩修改为C，代表学生s1没通过课程c1
+            //练习1：将学生s1的课程c1第一学期的成绩修改为C，代表学生s1没通过课程c1
 
             Console.WriteLine("Student" + s1.Name + "is attempting to enroll in" + sec2_2.ToString());
 
@@ -290,7 +289,7 @@ namespace SRSDEMO.UI
 
             ReportStatus(status1);
 
-            //第二学期选课
+            //第二学期课表
             Console.WriteLine("");
             Console.WriteLine("====================");
             Console.WriteLine("Schedule of Classes (the second semester):");

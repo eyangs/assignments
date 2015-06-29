@@ -83,7 +83,7 @@ public class Course {
       }
       else
       {
-         Console.WriteLine("课程本身不能使自己的先修课");
+         Console.WriteLine("课程本身不能使自己的先修课");//练习2
       } 
   }
 
@@ -114,20 +114,24 @@ public class Course {
 		
     return s;
   }
-}
 
-//练习4
-public void CancelSection(Section s)
-{
-//课程从选课项里移除
+
+  //练习4
+  public void CancelSection(Section s)
+  {
+      //课程从选课项里移除
       OfferedAsSection.Remove(s);
       //选课项从选课表里移除
       s.OfferedIn.SectionsOffered.Remove(s.RepresentedCourse.CourseNumber +
                  " - " + s.SectionNumber);
 
-      Console.WriteLine("课程已移处选课表");
+      Console.WriteLine("课程已移出选课表！");
 
   }
+
+
+ 
+}
 
 
 
