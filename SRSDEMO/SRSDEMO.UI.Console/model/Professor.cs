@@ -116,7 +116,7 @@ public class Professor : Person {
           {
               //则不可选
               access = false;
-              Console.WriteLine(s + "和" + Teaches[i] +"的时间想冲突");
+              Console.WriteLine(s + "和" + Teaches[i] +"的时间相冲突");
               Console.WriteLine("Tips："+ this.Name + "不能在同一时间教授两门课程！！！");
           }
           break;

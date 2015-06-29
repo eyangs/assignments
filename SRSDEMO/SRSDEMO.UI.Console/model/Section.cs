@@ -84,12 +84,13 @@ public class Section {
 
   //**************************************
   //
+    //第五题，增加检查某课程先修课程成绩即可
   public EnrollFlags Enroll(Student s) {
     // First, make sure that this Student is not already
     // enrolled for this Section, has not already enrolled
     // in another section of this class and that he/she has
     // NEVER taken and passed the course before.  
-		
+		//成绩
     Transcript transcript = s.Transcript;
 
     if (s.IsEnrolledIn(this) || 
@@ -129,6 +130,8 @@ public class Section {
     // Note bidirectionality:  this Section holds
     // onto the Student via the Dictionary, and then
     // the Student is given an object reference to this Section.
+      //增加先修课程成绩的判断
+
 
     EnrolledStudents.Add(s.Id, s);
     s.AddSection(this);
@@ -277,6 +280,16 @@ public class Section {
     return true;
   }
 	
+    //第六题，修改成绩
+  public void  EraseGrade(Student s, string grade) 
+  {
+        TranscriptEntry te = new TranscriptEntry(s, grade, this);  
+        AssignedGrades.Remove(s);  
+        AssignedGrades.Add(s, te);      
+  }
+
+
+
   //**************************************
   //
   public bool IsSectionOf(Course c) {

@@ -248,24 +248,24 @@ namespace SRSDEMO.UI
             //题一，第一学期课程不及格时候选课
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5,sec2_6, sec2_7;
 
-            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
-            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
-            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
-            sec2_6 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241", 15);
-            sec2_7 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25", 40);
+            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101_", 30);
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202_", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105_", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330_", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101_", 20);
+            sec2_6 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241_", 15);
+            sec2_7 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25_", 40);
 
             //将Section加入到选课列表中
             // Add these to the Schedule of Classes.
 
-            scheduleOfClasses.AddSection(sec2_1);
-            scheduleOfClasses.AddSection(sec2_2);
-            scheduleOfClasses.AddSection(sec2_3);
-            scheduleOfClasses.AddSection(sec2_4);
-            scheduleOfClasses.AddSection(sec2_5);
-            scheduleOfClasses.AddSection(sec2_6);
-            scheduleOfClasses.AddSection(sec2_7);
+            scheduleOfClasses1.AddSection(sec2_1);
+            scheduleOfClasses1.AddSection(sec2_2);
+            scheduleOfClasses1.AddSection(sec2_3);
+            scheduleOfClasses1.AddSection(sec2_4);
+            scheduleOfClasses1.AddSection(sec2_5);
+            scheduleOfClasses1.AddSection(sec2_6);
+            scheduleOfClasses1.AddSection(sec2_7);
 
             //设定每门课的教师
             // Recruit a professor to teach each of the sections.
@@ -310,7 +310,6 @@ namespace SRSDEMO.UI
 
             EnrollFlags status3 = sec2_1.Enroll(s3);
 
-
             //这个方法显示这个学生本次选课是否成功
             ReportStatus(status3);
 
@@ -318,14 +317,32 @@ namespace SRSDEMO.UI
 
 
             
-            //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
+            ////题2：让s1选sec2
+            //EnrollFlags result = sec2_1.Enroll(s1);
 
 
-            //题3：
+            //题3：见professor.cs107行
 
 
-            //题4：
+            //题4：移除课程
+            //删除选课sec1
+            
+            c1.CancelSection(sec1);
+            //重新显示OfferedAsSection，观察sec1是否在其中
+            scheduleOfClasses.Display();
+            //Console.WriteLine(sec1);
+            Console.WriteLine("===================================");
+
+            //题6 修改成绩
+            //修改前s2在sec2成绩为B+
+            Console.WriteLine("修改前S2信息");
+            s2.Display();
+            Console.WriteLine("修改后S2信息");
+            string Grade = "A+";
+            sec2.EraseGrade(s2,Grade);
+            s2.Display();
+           
+
 
 
 
