@@ -99,17 +99,33 @@ public class Professor : Person {
                            s.RepresentedCourse.CourseName);
         Console.WriteLine("\tDay and Time:  "+
                            s.DayOfWeek+" - "+s.TimeOfDay);
+
+
+
+
 			Console.WriteLine("\t-----");
       }
     }
   }
 	
-  //**************************************
+  //题3
   //
   public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
+      
+      if ( this == s )
+      {
+          Console.WriteLine("不能同一天/同一时刻教两门课");
 
-    // We need to link this bidirectionally.
+      }
+      else
+      {
+          Teaches.Add(s);
+      }
+  }
+    
+      
+      
+      // We need to link this bidirectionally.
     s.Instructor = this;
   }
 }

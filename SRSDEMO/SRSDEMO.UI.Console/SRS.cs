@@ -19,9 +19,13 @@ namespace SRSDEMO.UI
         static void Main(string[] args)
         {
             Professor p1, p2, p3;decimal 
-            Student s1, s2, s3;
+
             Course c1, c2, c3, c4, c5;
+
             Section sec1, sec2, sec3, sec4, sec5, sec6, sec7;
+
+            Student s1, s2, s3;
+
 
             // 创建多个对象（可能调用不同的构造函数）
             // 通常从数据库或文件中读取数据加载对象到内存中
@@ -30,7 +34,7 @@ namespace SRSDEMO.UI
             // Professors.
             // -----------
 
-            p1f = new Professor("Jacquie Barker", "123-45-6789",
+            p1= new Professor("Jacquie Barker", "123-45-6789",
                                "Adjunct Professor", "Information Technology");
             p2 = new Professor("John Carson", "567-81-2345",
                                "Full Professor", "Chemistry");
@@ -204,7 +208,7 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            sec1.PostGrade(s1, "F");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
@@ -243,15 +247,65 @@ namespace SRSDEMO.UI
 
             //练习14.2
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
+            sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+
+            scheduleOfClasses.AddSection(sec2_1);
+            scheduleOfClasses.AddSection(sec2_2);
+            scheduleOfClasses.AddSection(sec2_3);
+            scheduleOfClasses.AddSection(sec2_4);
+            scheduleOfClasses.AddSection(sec2_5);
+            
+            //题1：
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_1.ToString());
+
+            EnrollFlags status = sec2_1.Enroll(s1);
+            
+            
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              sec2_1.ToString());
+
+            EnrollFlags status = sec2_1.Enroll(s2);
+            
+            Console.WriteLine("Student " + s3.Name +
+                              " is attempting to enroll in " +
+                              sec2_1.ToString());
+
+            EnrollFlags status = sec2_1.Enroll(s3);
+            
+           
+            
             //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
+            EnrollFlags result = sec2.Enroll(s1);
 
 
+            
+            
+            
+            
             //题3：
+            
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
             //题4：

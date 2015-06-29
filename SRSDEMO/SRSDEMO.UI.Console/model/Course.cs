@@ -74,10 +74,17 @@ public class Course {
     return CourseNumber + ":  "+CourseName;
   }
 
-  //**************************************
-  //
+  //题2  
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+      if (this == c)
+      {
+          Console.WriteLine("不能将自己设为先修课");
+
+      }
+      else {
+          Prerequisites.Add(c);
+      }
+    
   }
 
   //**************************************
