@@ -108,8 +108,9 @@ public class Section {
 	
         // See if the Student's Transcript reflects
         // successful completion of the prerequisite.
-
-        if (!transcript.VerifyCompletion(pre)) {
+    //14.5练习5  增加一个判断，判断学生是否选修了这门课程
+        if (!transcript.VerifyCompletion(pre)  ||  this.IsSectionOf(pre))
+        {
           return EnrollFlags.PREREQ_NOT_SATISFIED;
         }
       }
