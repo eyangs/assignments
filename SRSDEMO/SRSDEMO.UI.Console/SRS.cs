@@ -9,7 +9,9 @@ namespace SRSDEMO.UI
     {
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
-                         new ScheduleOfClasses("SP2009");kjlklj
+                         new ScheduleOfClasses("SP2009");
+        public static ScheduleOfClasses scheduleOfClasses2 =
+                         new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -204,7 +206,7 @@ namespace SRSDEMO.UI
 
             sec1.PostGrade(s1, "C+");
             sec1.PostGrade(s3, "A");
-            sec2.PostGrade(s2, "B+");
+            sec2.PostGrade(s2,"E");
             sec7.PostGrade(s2, "A-");
 
             
@@ -238,6 +240,48 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
+            //P476练习14.5 第1小题
+            Section sec21, sec22, sec23, sec24, sec25, sec26, sec27;
+            //第二学期排课
+            sec21 = c1.ScheduleSection("G", "8:00-10;00PM", "GOVT102", 32);
+            sec22 = c1.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT203", 33);
+            sec23 = c2.ScheduleSection("Tu", "4:10 - 6:00 PM", "GOVT106", 29);
+            sec24 = c2.ScheduleSection("Th", "6:10 - 8:00 PM", "SCI331", 28);
+            sec25 = c3.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT102", 24);
+            sec26 = c4.ScheduleSection("F", "4:10 - 6:00 PM", "SCI242", 20);
+            sec27 = c5.ScheduleSection("M", "4:10 - 6:00 PM", "ARTS26", 35);
+            //将第二学期的Section加入到选课列表scheduleOfClasses2中 
+            scheduleOfClasses2.AddSection(sec21);
+            scheduleOfClasses2.AddSection(sec22);
+            scheduleOfClasses2.AddSection(sec23);
+            scheduleOfClasses2.AddSection(sec24);
+            scheduleOfClasses2.AddSection(sec25);
+            scheduleOfClasses2.AddSection(sec26);
+            scheduleOfClasses2.AddSection(sec27);
+            //设定每门课的老师
+            p1.AgreeToTeach(sec21);
+            p2.AgreeToTeach(sec22);
+            p3.AgreeToTeach(sec23);
+            p1.AgreeToTeach(sec24);
+            p3.AgreeToTeach(sec25);
+            p2.AgreeToTeach(sec26);
+            p1.AgreeToTeach(sec27);
+
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+            //模拟第二学期选课 上面已将s2的Sec2(C1)成绩改为"E"，使之不及格，现在让s2选修sec23（应该不满足条件）
+            Console.WriteLine("Student " + s2.Name +
+                              " is attempting to enroll in " +
+                              sec23.ToString());
+            status = sec23.Enroll(s2);
+            //这个方法显示这个学生本次选课是否成功
+            ReportStatus(status);
+            //让成功修完sec1(C1)的s3选修sec23（应该成功）
+            Console.WriteLine("Student " + s3.Name +
+                             " is attempting to enroll in " +
+                             sec23.ToString());
+            status = sec23.Enroll(s1);
+            ReportStatus(status);
 
             Console.ReadKey();
         }

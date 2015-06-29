@@ -104,8 +104,28 @@ public class Professor : Person {
   }
 	
   //**************************************
-  //	
+  // //练习3 如果还没有section，直接添加，如果已有，添加判断，遍历Teaches已有的section,只有没有该时段内的Teaches才能添加 	
   public void AgreeToTeach(Section s) {
+      Boolean l = false;  
+        if (Teaches.Count == 0) 
+        {  
+        Teaches.Add(s);  
+        }   
+        else 
+        {  
+          for (int i=0; i<Teaches.Count; i++) 
+          {  
+          
+           if(Teaches[i].TimeOfDay==s.TimeOfDay &&Teaches[i].DayOfWeek==s.DayOfWeek)  
+  
+           l =true;  
+           break;  
+         
+          }  
+       
+   
+     if(l=false)  
+
     Teaches.Add(s);
 
     // We need to link this bidirectionally.

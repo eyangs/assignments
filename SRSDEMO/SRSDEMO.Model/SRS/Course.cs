@@ -30,7 +30,8 @@ public class Course {
   //-------------------------------
   // Auto-implemented properties.
   //-------------------------------
-
+  //练习4 定义静态变量SectionNumber
+  public static int SectionNumber { get; set; }
   public string CourseNumber { get; set; }
   public string CourseName { get; set; }
   public double Credits { get; set; }
@@ -75,9 +76,12 @@ public class Course {
   }
 
   //**************************************
-  //	
-  public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+  //练习2 增加判断语句 当c1课程号与当前课程号不相等时才能执行增加先修课，确保c1不能把自己设为先修课	
+  public void AddPrerequisite(Course c1) 
+  {
+      if (c1.CourseNumber != this.CourseNumber)
+ 
+    Prerequisites.Add(c1);
   }
 
   //**************************************
@@ -92,9 +96,10 @@ public class Course {
   }
 
   //******************************************************************************
-  //
+  // //在course类定义静态变量SectionNumber，改正逻辑错误
   public Section ScheduleSection(int secNumber, string day, string time, string room,
-				       int capacity) {
+				       int capacity) 
+  {
     // Create a new Section  ...
     Section s = new Section(secNumber, day, time, this, room, capacity);
 		
@@ -102,5 +107,13 @@ public class Course {
     OfferedAsSection.Add(s);
 		
     return s;
+  }
+      //练习4 增加一个取消section方法
+  public bool CancelSection(Section s)  
+  {  
+     this.OfferedAsSection.Remove(s);  
+     return true;  
+  
+  }  
   }
 }
