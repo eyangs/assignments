@@ -12,6 +12,10 @@ namespace SRSDEMO.UI
                          new ScheduleOfClasses("SP2009");
         public static ScheduleOfClasses scheduleOfClasses1 =
                          new ScheduleOfClasses("SM2009");
+
+
+        public static ScheduleOfClasses scheduleOfClasses2 = new ScheduleOfClasses("SM2009"); 
+
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -208,7 +212,7 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "F");
+            sec1.PostGrade(s1, "B");  
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
@@ -246,6 +250,7 @@ namespace SRSDEMO.UI
             s3.Display();
 
             //练习14.2
+            //类初始化
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
             
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
@@ -260,55 +265,39 @@ namespace SRSDEMO.UI
             scheduleOfClasses.AddSection(sec2_4);
             scheduleOfClasses.AddSection(sec2_5);
             
-            //题1：
+           // 练习1（1），令学生s1的c1课程选修不及格,重新选课
+            sec1.PostGrade(s1, "F"); 
             Console.WriteLine("Student " + s1.Name +
                               " is attempting to enroll in " +
                               sec2_1.ToString());
 
             EnrollFlags status = sec2_1.Enroll(s1);
+           
             
-            
-            Console.WriteLine("Student " + s2.Name +
-                              " is attempting to enroll in " +
-                              sec2_1.ToString());
-
-            EnrollFlags status = sec2_1.Enroll(s2);
+            //练习1(2)  s3课程c1通过可以选第二学期的课
             
             Console.WriteLine("Student " + s3.Name +
                               " is attempting to enroll in " +
-                              sec2_1.ToString());
+                              sec2_2.ToString());
 
-            EnrollFlags status = sec2_1.Enroll(s3);
+            EnrollFlags status = sec2_2.Enroll(s3);
             
            
             
-            //题2：让s1选sec2
-            EnrollFlags result = sec2.Enroll(s1);
+            //练习2  
+          
+            
 
 
             
+     
             
-            
-            
-            //题3：
+            //练习3：
             
            
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //题4：
+            //练习4：
 
 
 
