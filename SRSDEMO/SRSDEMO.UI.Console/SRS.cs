@@ -208,6 +208,7 @@ namespace SRSDEMO.UI
 
             //修改s1的成绩
             sec1.PostGrade(s1, "F");
+            //sec1.PostGrade(s1, "B");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");

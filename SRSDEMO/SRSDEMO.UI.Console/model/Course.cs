@@ -102,12 +102,15 @@ public class Course {
   //******************************************************************
   //
     //题4：更正ScheduleSection方法,使之不出现重复的Section编号
+  public static int NumOfSection = 1;
   public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    Section s = new Section(OfferedAsSection.Count + 1, 
-				day, time, this, room, capacity);
+      Section s = new Section(NumOfSection++, 
+	           	day, time, this, room, capacity);
+    //Section s = new Section(OfferedAsSection.Count+1, 
+	//			day, time, this, room, capacity);
 		
     // ... and then add it to the List
     OfferedAsSection.Add(s);
