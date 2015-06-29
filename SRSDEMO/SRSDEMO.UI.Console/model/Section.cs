@@ -110,7 +110,11 @@ public class Section {
         // successful completion of the prerequisite.
 
         if (!transcript.VerifyCompletion(pre)) {
-          return EnrollFlags.PREREQ_NOT_SATISFIED;
+            //练习五 添加判断，看是否选修了该课程
+           if (!transcript.VerifyCompletion(pre) ||  this.IsSectionOf(pre))
+           {
+           return EnrollFlags.PREREQ_NOT_SATISFIED;
+           }
         }
       }
     }
