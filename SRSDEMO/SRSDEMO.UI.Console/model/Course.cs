@@ -77,7 +77,20 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+      //第二题，改进先修课程方法，防止把自己设为先修
+     //判断课程名是否相等
+      if (string.Equals(c.CourseName, this.CourseName))
+      {
+          //课程名相同 即为同一门课程 不能添加
+          Console.WriteLine("不能将自身设为先修课程");          
+      }
+      else 
+      {
+          //否则可以添加
+          Prerequisites.Add(c);
+      }
+
+    //Prerequisites.Add(c);
   }
 
   //**************************************
