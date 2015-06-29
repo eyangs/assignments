@@ -75,8 +75,9 @@ public class Course {
   }
 
   //**************************************
-  //
+  //练习2修改，增加if判断语句，只有c的课程与当前课程课程号不同才会执行增加先修课程
   public void AddPrerequisite(Course c) {
+   if(c.CourseNumber!=this.CourseNumber)
     Prerequisites.Add(c);
   }
 
