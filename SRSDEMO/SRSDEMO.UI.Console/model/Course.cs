@@ -78,7 +78,7 @@ public class Course
     //
     public override string ToString()
     {
-        return CourseNumber + ":" + CourseName;
+        return CourseNumber + ":  " + CourseName;
     }
 
     //**************************************
