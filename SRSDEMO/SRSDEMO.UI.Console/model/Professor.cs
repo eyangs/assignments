@@ -107,7 +107,7 @@ public class Professor : Person {
   //**************************************
   //
 
-//Á·Ï°3
+//Á·Ï°3¡£
   public void AgreeToTeach(Section s)
   {
       bool isSameTime = true;

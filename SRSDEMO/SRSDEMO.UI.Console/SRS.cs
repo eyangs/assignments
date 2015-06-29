@@ -286,7 +286,7 @@ namespace SRSDEMO.UI
 
             Console.WriteLine("");
 
-            //学生s3的课程c1第一学期的成绩是A，课程通过，s3可以选择课程c2
+            //学生s3的课程c1第一学期的成绩是A。课程通过，s3可以选择课程c2
 
             Console.WriteLine("Student " + s3.Name +
                               " is attempting to enroll in " +

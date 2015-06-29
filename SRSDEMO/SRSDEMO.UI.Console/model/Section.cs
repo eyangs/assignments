@@ -306,7 +306,7 @@ public class Section
     }
 
 
-    //Á·Ï°6
+    //Á·Ï°6¡£
     public void EraseGrade(Student s, string grade)
     {
         if (AssignedGrades.ContainsKey(s) == true)

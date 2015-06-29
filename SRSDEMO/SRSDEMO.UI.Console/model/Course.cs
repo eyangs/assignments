@@ -106,7 +106,7 @@ public class Course {
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    //练习4 为了保证选课号都不一样
+    //练习4 。为了保证选课号都不一样
      sectionnum = sectionnum + 1;
     Section s = new Section(sectionnum,
                 day, time, this, room, capacity);
@@ -119,7 +119,7 @@ public class Course {
 
 
 
-  //练习4
+  //练习4。
   public void CancelSection(Section s)
   {
       //课程从选课项里移除
