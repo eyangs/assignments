@@ -104,8 +104,27 @@ public class Professor : Person {
     }
   }
 	
-  //**************************************
+  //检查是否添加section，遍历已有的section，只有符合条件的才可以添加
+    public void AgreeToTeach(Section s)
+    {
+         Boolean l = false;
+        if (Teaches.Count == 0) 
+        {
+            Teaches.Add(s);
+        }
+        else
+        {
+            for (int i=0; i<Teaches.Count; i++) 
+            {
+                if(Teaches[i].TimeOfDay==s.TimeOfDay &&Teaches[i].DayOfWeek==s.DayOfWeek)
+                l =true;
+                 break;
+            }
+        }
+        if(l=false)
+      }
   //
+                
   public void AgreeToTeach(Section s) {
     Teaches.Add(s);
 
