@@ -107,7 +107,7 @@ public class Course
     }
 
     //******************************************************************
-    //
+   
     //练习四  在course类定义静态变量SectionNumber，改正逻辑错误
     public Section ScheduleSection(string day, string time, string room,
                        int capacity)
