@@ -273,10 +273,21 @@ public class Section {
     // Student to the AssignedGrades Dictionary.
 
     AssignedGrades.Add(s, te);
-
+  
     return true;
   }
-	
+	//******************************************
+    //创建修改成绩的方法,先删除指定的学生成绩在添加新的成绩
+  public bool EraseGrade(Student s, string grade)
+  {
+      
+      TranscriptEntry te = new TranscriptEntry(s, grade, this);
+      AssignedGrades.Remove(s);
+      AssignedGrades.Add(s, te);
+      return true;
+
+
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {
