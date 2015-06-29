@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class Course {
 
   //----------------
-  // Constructor(s).
+  // Constructor(s)..
   //----------------
 
   public Course(string cNo, string cName, double credits) {
