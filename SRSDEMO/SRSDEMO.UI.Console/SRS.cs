@@ -10,8 +10,10 @@ namespace SRSDEMO.UI
         //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
+        //题一：第二学期课程表
         public static ScheduleOfClasses scheduleOfClasses1 =
                          new ScheduleOfClasses("SM2009");
+
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -136,7 +138,7 @@ namespace SRSDEMO.UI
                               " is attempting to enroll in " +
                               sec1.ToString());
 
-            EnrollFlags status = sec1.Enroll(s1);
+            EnrollFlags status1 = sec1.Enroll(s1);
 
             // Note the use of a special method to interpret
             // and display the outcome of this enrollment request.
@@ -147,7 +149,7 @@ namespace SRSDEMO.UI
             // instead.)
 
             //这个方法显示这个学生本次选课是否成功
-            ReportStatus(status);
+            ReportStatus(status1);
 
             //让该学生（s1）再次选这门课程（已选过），观察选课结果（选课应该不能成功）
             // Try enrolling the same Student in a different Section
@@ -156,38 +158,38 @@ namespace SRSDEMO.UI
             Console.WriteLine("Student " + s1.Name +
                               " is attempting to enroll in " +
                               sec2.ToString());  //sec1和sec2是同一Course的两个Section
-            status = sec2.Enroll(s1);
-            ReportStatus(status);
+            status1 = sec2.Enroll(s1);
+            ReportStatus(status1);
 
             Console.WriteLine("Student " + s2.Name +
                               " is attempting to enroll in " +
                               sec2.ToString());
-            status = sec2.Enroll(s2);
-            ReportStatus(status);
+            status1 = sec2.Enroll(s2);
+            ReportStatus(status1);
 
             Console.WriteLine("Student " + s2.Name +
                               " is attempting to enroll in " +
                               sec3.ToString());
-            status = sec3.Enroll(s2);
-            ReportStatus(status);
+            status1 = sec3.Enroll(s2);
+            ReportStatus(status1);
 
             Console.WriteLine("Student " + s2.Name +
                            " is attempting to enroll in " +
                            sec7.ToString());
-            status = sec7.Enroll(s2);
-            ReportStatus(status);
+            status1 = sec7.Enroll(s2);
+            ReportStatus(status1);
 
             Console.WriteLine("Student " + s3.Name +
                            " is attempting to enroll in " +
                            sec1.ToString());
-            status = sec1.Enroll(s3);
-            ReportStatus(status);
+            status1 = sec1.Enroll(s3);
+            ReportStatus(status1);
 
             Console.WriteLine("Student " + s3.Name +
                            " is attempting to enroll in " +
                            sec5.ToString());
-            status = sec5.Enroll(s3);
-            ReportStatus(status);
+            status1 = sec5.Enroll(s3);
+            ReportStatus(status1);
 
             // Skip a line.
             Console.WriteLine("");
@@ -243,35 +245,59 @@ namespace SRSDEMO.UI
 
             //练习14.5
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            
+            //排课
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
             sec2_2 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
             sec2_3 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
             sec2_4 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
             sec2_5 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            
+            //将Section加入到选课列表中
             scheduleOfClasses1.AddSection(sec2_1);
             scheduleOfClasses1.AddSection(sec2_2);
             scheduleOfClasses1.AddSection(sec2_3);
             scheduleOfClasses1.AddSection(sec2_4);
             scheduleOfClasses1.AddSection(sec2_5);
+
+            //设定每门课的教师
+            p3.AgreeToTeach(sec2_1);
+            p2.AgreeToTeach(sec2_2);
+            p1.AgreeToTeach(sec2_3);
+            p3.AgreeToTeach(sec2_4);
+            p1.AgreeToTeach(sec2_5);
+
+            Console.WriteLine("Student registration has begun!");
+            Console.WriteLine("");
+            
             //题1.1：让s1选sec2_3
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_3.ToString());
+
+            EnrollFlags status2 = sec2_3.Enroll(s1);
             
             //题1.2：让s2选sec2_1
-            EnrollFlags result = sec2_1.Enroll(s2);
+            Console.WriteLine("Student " + s2.Name +
+                             " is attempting to enroll in " +
+                             sec2_1.ToString());
+
+            status2 = sec2_1.Enroll(s3);
+
+            ReportStatus(status2);
 
 
-            //题2：课程不能把自己设置为先修课程
-
-
-            //题3：同一个教授在同一天同一时刻教授两门课
-
-            //题4：不出现重复Section编号
-
-            //题5：同时选修一门课程及其先修课程
-
-            //题6：创建EraseGrade方法，让教授能够更改学生成绩
+            //第二学期课表
+            Console.WriteLine("");
+            Console.WriteLine("====================");
+            Console.WriteLine("Schedule of Classes2:");
+            Console.WriteLine("====================");
+            Console.WriteLine("");
+            scheduleOfClasses1.Display();
 
 
 
+           
             Console.ReadKey();
         }
 
