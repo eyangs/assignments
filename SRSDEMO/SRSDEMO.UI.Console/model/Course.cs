@@ -106,9 +106,9 @@ public class Course {
 		
     return s;
   }
-    public bool CancelSection(Section s)
-   £û
-        this.OfferedAsSection.Remove(s);
-        return true;
-    £ý
+  public bool CancelSection(Section s)
+  {
+      this.OfferedAsSection.Remove(s);
+      return true;
+  }
 }
