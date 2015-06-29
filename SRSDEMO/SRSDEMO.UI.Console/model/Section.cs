@@ -124,17 +124,17 @@ public class Section {
     }
     
 //第五题 选修某课程，他有先修课程，在他之前已选的课程中查看是否有他的先修课程。
-    if (c.HasPrerequisites())
-    {
-     for (int i = 0; i < c.Prerequisites.Count;i++)//查询先修课程
-        {         
-          for( int j = 0; j<c.RepresentedCourse.Count;j++)//选课查询之前
-         if (Prerequisites[i]=RepresentedCourse[j])
-            {
-                return EnrollFlags.PREREQ_and_now  ;
-            }
-        }
-    }
+//    if (c.HasPrerequisites())
+//    {
+//     for (int i = 0; i < c.Prerequisites.Count;i++)//查询先修课程
+//        {         
+//          for( int j = 0; j<c.RepresentedCourse.Count;j++)//选课查询之前
+//         if (Prerequisites[i]=RepresentedCourse[j])
+//            {
+//                return EnrollFlags.PREREQ_and_now  ;
+//            }
+//        }
+//    }
 
 
 
