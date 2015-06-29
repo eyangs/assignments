@@ -312,8 +312,11 @@ public class Section
         if (AssignedGrades.ContainsKey(s) == true)
         {
             s.Transcript.TranscriptEntries.Remove(AssignedGrades[s]);
+
             AssignedGrades.Remove(s);
+            
             TranscriptEntry te = new TranscriptEntry(s, grade, this);
+            
             AssignedGrades.Add(s, te);
         }
     }
@@ -322,7 +325,7 @@ public class Section
     //**************************************
     //
 
-    public bool IsSectioOf(Course c){
+ public bool IsSectionOf(Course c){
    if(c == RepresentedCourse){
       return true;
     }
