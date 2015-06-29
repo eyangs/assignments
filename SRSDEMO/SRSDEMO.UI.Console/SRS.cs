@@ -282,14 +282,24 @@ namespace SRSDEMO.UI
 
             Console.WriteLine("");
 
+           //学生s3的课程c1第一学期成绩是A，课程通过可以选择课程c2
+
+            Console.WriteLine("Student" + s3.Name + "is attempting to enroll in" + sec2_2.ToString());
+
+            status1 = sec2_2.Enroll(s3);
+
+            ReportStatus(status1);
+
+            //第二学期选课
+            Console.WriteLine("");
+            Console.WriteLine("====================");
+            Console.WriteLine("Schedule of Classes (the second semester):");
+            Console.WriteLine("====================");
+            Console.WriteLine("");
+            scheduleOfClasses2.Display();
 
 
-
-            //题4：
-
-
-
-            Console.ReadKey();
+               Console.ReadKey();
         }
 
         public static void ReportStatus(EnrollFlags status)
