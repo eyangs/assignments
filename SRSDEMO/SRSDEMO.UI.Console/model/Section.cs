@@ -108,8 +108,8 @@ public class Section {
 	
         // See if the Student's Transcript reflects
         // successful completion of the prerequisite.
-
-        if (!transcript.VerifyCompletion(pre)) {
+        if (!transcript.VerifyCompletion(pre) || this.IsSectionOf(pre))
+        {
           return EnrollFlags.PREREQ_NOT_SATISFIED;
         }
       }
