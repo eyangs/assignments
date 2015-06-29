@@ -71,38 +71,72 @@ public class Professor : Person {
 
   //**************************************
   //
-  public void DisplayTeachingAssignments() {
-    Console.WriteLine("Teaching Assignments for " + Name + ":");
-		
-    // We'll step through the Teaches List, processing
-    // Section objects one at a time.
+  public void DisplayTeachingAssignments()
+  {
+      Console.WriteLine("Teaching Assignments for " + Name + ":");
 
-    if (Teaches.Count == 0) {
-      Console.WriteLine("\t(none)");
-    } 
-    else {
-      for (int i=0; i<Teaches.Count; i++) {
-        // Because we are going to need to delegate a lot of the effort
-        // of satisfying this request to the various Section objects that
-        // comprise the Professor's teaching load, we "pull" the Section 
-        // object once, and refer to it by a temporary object reference.
+      // We'll step through the Teaches List, processing
+      // Section objects one at a time.
 
-        Section s = Teaches[i];
-
-        // Note how we call upon the Section object to do
-        // a lot of the work for us!
-
-        Console.WriteLine("\tCourse No.:  "+
-                           s.RepresentedCourse.CourseNumber);
-        Console.WriteLine("\tSection No.:  "+s.SectionNumber);
-        Console.WriteLine("\tCourse Name:  "+
-                           s.RepresentedCourse.CourseName);
-        Console.WriteLine("\tDay and Time:  "+
-                           s.DayOfWeek+" - "+s.TimeOfDay);
-			Console.WriteLine("\t-----");
+      if (Teaches.Count == 0)
+      {
+          Console.WriteLine("\t(none)");
       }
-    }
-  }
+      else
+      {
+          for (int i = 0; i < Teaches.Count; i++)
+          {
+              // Because we are going to need to delegate a lot of the effort
+              // of satisfying this request to the various Section objects that
+              // comprise the Professor's teaching load, we "pull" the Section 
+              // object once, and refer to it by a temporary object reference.
+
+              Section s = Teaches[i];
+
+              // Note how we call upon the Section object to do
+              // a lot of the work for us!
+
+              Console.WriteLine("\tCourse No.:  " +
+                                 s.RepresentedCourse.CourseNumber);
+              Console.WriteLine("\tSection No.:  " + s.SectionNumber);
+              Console.WriteLine("\tCourse Name:  " +
+                                 s.RepresentedCourse.CourseName);
+              Console.WriteLine("\tDay and Time:  " +
+                                 s.DayOfWeek + " - " + s.TimeOfDay);
+              Console.WriteLine("\t-----");
+          }
+      }
+  }          //**************************************
+    //练习3 如果还没有section，直接添加，如果已有，添加判断，遍历Teaches已有的section,只有没有该时段内的Teaches才能添加
+    public void AgreeToTeach(Section s)
+    {
+        Boolean l = false;
+        if (Teaches.Count == 0)
+        {
+            Teaches.Add(s);
+        }
+        else
+        {
+            for (int i = 0; i < Teaches.Count; i++)
+            {
+
+                 if (Teaches[i].TimeOfDay == s.TimeOfDay && Teaches[i].DayOfWeek == s.DayOfWeek)
+
+                    l = true;
+                break;
+
+            }
+
+
+            if (l = false)
+                Teaches.Add(s);
+
+            // We need to link this bidirectionally.
+            s.Instructor = this;
+        }
+     }
+     
+  
 	
   //**************************************
   //
