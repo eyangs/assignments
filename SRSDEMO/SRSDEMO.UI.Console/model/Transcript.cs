@@ -59,8 +59,18 @@ public class Transcript {
   }
 
   //****************************************************
-  //
+  //题6：创建EraseGrade方法
   public void AddTranscriptEntry(TranscriptEntry te) {
+      foreach(var e in TranscriptEntries)
+      {
+          if (e.Student.Equals(te.Student) && e.Section.Equals(te.Section))
+          {
+              e.Grade = te.Grade;
+              return;
+          
+          }
+      
+      }
     TranscriptEntries.Add(te);
   }
 

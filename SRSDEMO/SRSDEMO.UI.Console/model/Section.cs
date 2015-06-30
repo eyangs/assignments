@@ -272,15 +272,25 @@ public class Section {
     // "hooking" this T.E. to the correct Transcript.)
 
     TranscriptEntry te = new TranscriptEntry(s, grade, this);
-
+    
     // Then, we add the TranscriptEntry and its associated
     // Student to the AssignedGrades Dictionary.
 
     AssignedGrades.Add(s, te);
-
-    return true;
+     return true;
   }
-	
+    //题6：创建一个EraseGrade
+  public bool EraseGrade(Student s, string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == false)
+      {
+          return false;
+      }
+      TranscriptEntry te = new TranscriptEntry(s, grade, this);
+      AssignedGrades[s] = te;
+      return true;
+  
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {

@@ -212,6 +212,7 @@ namespace SRSDEMO.UI
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
+           
 
             
             //使用display方法显示各个对象最终状态
