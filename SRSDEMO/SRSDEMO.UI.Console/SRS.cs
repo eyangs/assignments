@@ -342,6 +342,8 @@ namespace SRSDEMO.UI
             Console.WriteLine("===================================");
             Console.WriteLine("题6 修改成绩");
             Console.WriteLine("修改前S2选课sec2的成绩为"+ sec2.GetGrade(s2));
+            Console.WriteLine("修改前S2信息");
+            s2.Display();
             
             //s2.Display();
             //修改其成绩为A+
@@ -349,6 +351,8 @@ namespace SRSDEMO.UI
             sec2.EraseGrade(s2,Grade);
             //s2.Display();
             Console.WriteLine("修改后S2选课sec2的成绩为" + sec2.GetGrade(s2));
+            Console.WriteLine("修改前S2信息");
+            s2.Display();
             Console.WriteLine("===================================");
 
 

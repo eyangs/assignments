@@ -274,7 +274,21 @@ public class Section {
 
     // Then, we add the TranscriptEntry and its associated
     // Student to the AssignedGrades Dictionary.
+    //  //题六 修改成绩，应在此增加判断，若成绩存在则不再新添加成绩
+    //bool ex = true;
+    //foreach (var e in AssignedGrades)
+    //  {
+    //      if (     )
+    //    {
+    //        ex = false;
 
+    //    }
+    //  }
+    //  //执行完毕，ex仍为true，即不存在成绩则添加
+    //if (ex)
+    //{
+    //    AssignedGrades.Add(s, te);
+    //}
     AssignedGrades.Add(s, te);
 
     return true;
@@ -284,7 +298,7 @@ public class Section {
   public void  EraseGrade(Student s, string grade) 
   {
       TranscriptEntry te = new TranscriptEntry(s, grade, this);
-      //根据主键学生修改相应课程的成绩
+      //根据键学生修改相应课程的成绩
       AssignedGrades[s] = te;
 
         //AssignedGrades.Remove(s);
