@@ -205,8 +205,8 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            //sec1.PostGrade(s1, "C+"); 修改此学生成绩为Z
-            sec1.PostGrade(s1, "Z");
+            //sec1.PostGrade(s1, "C+"); 修改此学生成绩为I
+            sec1.PostGrade(s1, "I");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
@@ -326,22 +326,30 @@ namespace SRSDEMO.UI
 
             //题4：移除课程
             //删除选课sec1
-            
+            Console.WriteLine("===================================");
+            Console.WriteLine("题4：移除课程");
+            //调用方法移除选课
+            Console.WriteLine("删除选课"+sec1);
             c1.CancelSection(sec1);
             //重新显示OfferedAsSection，观察sec1是否在其中
-            scheduleOfClasses.Display();
+            
+            
             //Console.WriteLine(sec1);
             Console.WriteLine("===================================");
 
             //题6 修改成绩
             //修改前s2在sec2成绩为B+
-            Console.WriteLine("修改前S2信息");
-            s2.Display();
-            Console.WriteLine("修改后S2信息");
+            Console.WriteLine("===================================");
+            Console.WriteLine("题6 修改成绩");
+            Console.WriteLine("修改前S2选课sec2的成绩为"+ sec2.GetGrade(s2));
+            
+            //s2.Display();
+            //修改其成绩为A+
             string Grade = "A+";
             sec2.EraseGrade(s2,Grade);
-            s2.Display();
-           
+            //s2.Display();
+            Console.WriteLine("修改后S2选课sec2的成绩为" + sec2.GetGrade(s2));
+            Console.WriteLine("===================================");
 
 
 

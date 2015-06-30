@@ -129,11 +129,48 @@ public class Course {
     //更正ScheduleOfSection方法的错误逻辑，使之不出现重复的课程编号
   public void  CancelSection(Section sec)
   {
-      //移除选课s     
+      Console.WriteLine("删除前的结果为：");
+      Console.WriteLine("------------------------");
+      for (int i = 0; i < OfferedAsSection.Count; i++)
+      {
+          Console.WriteLine(OfferedAsSection[i]);
+      }
+      Console.WriteLine("-----------------------");
+      //移除选课s 
+      //定义索引
+      int suoyin = 255;
+      for (int i = 0; i < OfferedAsSection.Count;i++ )
+      {
+          if (OfferedAsSection[i]==sec)
+          {
+              //根据选课取得索引
+              suoyin = i;
+              break;
+          }
+      }
+      if (suoyin != 255)
+      {
+          OfferedAsSection.RemoveAt(suoyin);          
+          Console.WriteLine(sec +"这门课程已经移除！");
+      }
+      else 
+      {
+          Console.WriteLine("已经不存在" + sec + "这门课程！");
+      }
+      Console.WriteLine("删除后的结果为：");
+      Console.WriteLine("------------------------");
+      for (int i = 0; i < OfferedAsSection.Count; i++)
+      {
+          Console.WriteLine(OfferedAsSection[i]);
+      }
+      Console.WriteLine( "-----------------------");
 
-      bool successed = OfferedAsSection.Remove(sec);
-      Console.WriteLine(successed );
-      Console.WriteLine(sec +"这门课程已经移除！");
+ 
+      
+
+      //bool successed = OfferedAsSection.Remove(sec);
+      //Console.WriteLine(successed );
+      //Console.WriteLine(sec +"这门课程已经移除！");
       
   }
 

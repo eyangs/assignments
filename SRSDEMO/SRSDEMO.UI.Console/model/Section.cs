@@ -283,9 +283,13 @@ public class Section {
     //第六题，修改成绩
   public void  EraseGrade(Student s, string grade) 
   {
-        TranscriptEntry te = new TranscriptEntry(s, grade, this);  
-        AssignedGrades.Remove(s);  
-        AssignedGrades.Add(s, te);      
+      TranscriptEntry te = new TranscriptEntry(s, grade, this);
+      //根据主键学生修改相应课程的成绩
+      AssignedGrades[s] = te;
+
+        //AssignedGrades.Remove(s);
+        //TranscriptEntry te = new TranscriptEntry(s, grade, this); 
+        //AssignedGrades.Add(s, te);      
   }
 
 

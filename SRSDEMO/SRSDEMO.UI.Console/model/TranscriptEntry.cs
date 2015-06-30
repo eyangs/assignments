@@ -19,7 +19,24 @@ public class TranscriptEntry {
 
     // Add the TranscriptEntry to the Student's Transcript.
 
-    s.Transcript.AddTranscriptEntry(this);
+      s.Transcript.AddTranscriptEntry(this);
+    //  // 修改上一行代码：成绩若存在，则不添加(题6 修改成绩 此法错误，将无法显示成绩)
+    //  //修改起始
+    //string[] possibleGrades1 = {"A+", "A", "A-", "B+", "B", "B-", "C+",
+    //                           "C", "C-", "D+", "D", "D-", "F", "I" };
+    //bool cj = false;
+    //foreach (string pg in possibleGrades1) 
+    //{
+    //    if(grade.Equals(pg))
+    //    {
+    //        cj = true;
+    //    }
+    //}
+    //  if(!cj)
+    //  {
+    //      s.Transcript.AddTranscriptEntry(this);
+    //  }
+    //  //修改结束
   }
 
   //--------------------------------
