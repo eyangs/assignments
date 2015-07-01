@@ -98,6 +98,7 @@ public class Course {
 
   //******************************************************************
   //
+   //练习四  在course类定义静态变量SectionNumber，改正逻辑错误
   public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
@@ -109,5 +110,10 @@ public class Course {
     OfferedAsSection.Add(s);
 		
     return s;
-  }
+  } 
+   //练习四 增加一个取消section方法 
+    public bool CancelSection(Section s)
+    {
+        this.OfferedAsSection.Remove(s);
+        return true;
 }
