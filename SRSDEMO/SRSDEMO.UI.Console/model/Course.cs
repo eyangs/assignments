@@ -77,7 +77,12 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+//确保一门课程不能把增加设为先修课程
+      if (c.CourseNumber != this.CourseNumber)
+      {
+            Prerequisites.Add(c);
+      }    
+  }
   }
 
   //**************************************
