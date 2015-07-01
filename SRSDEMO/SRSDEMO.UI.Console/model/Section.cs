@@ -277,7 +277,14 @@ public class Section {
 
     return true;
   }
-	
+  //创建EraseGrade方法修改成绩
+  public bool EraseGrade(Student s, string grade)
+  {
+      TranscriptEntry te = new TranscriptEntry(s, grade, this);
+      AssignedGrades.Remove(s);
+      AssignedGrades.Add(s, te);
+      return true;
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {
