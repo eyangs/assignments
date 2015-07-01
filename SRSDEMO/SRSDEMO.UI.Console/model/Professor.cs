@@ -107,7 +107,22 @@ public class Professor : Person {
   //**************************************
   //
   public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
+      //确保一个教授不能在同一天/同一时刻教第二门课
+        Boolean l = false;
+        if (Teaches.Count == 0)
+        {
+            Teaches.Add(s);
+        }
+        else
+        {
+            for (int i = 0; i < Teaches.Count; i++)
+            {
+                if (Teaches[i].TimeOfDay == s.TimeOfDay && Teaches[i].DayOfWeek == s.DayOfWeek)
+                    l = true;
+                break;
+            }
+            if (l == false)
+                Teaches.Add(s);
 
     // We need to link this bidirectionally.
     s.Instructor = this;
