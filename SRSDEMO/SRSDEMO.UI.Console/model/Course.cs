@@ -108,15 +108,30 @@ public class Course {
     OfferedAsSection.Add(s);
     return s;}
     //第四题
-  public void CancelSection(Section s)
-  {
-      if (OfferedAsSection.Contains(s))
-      {
-          OfferedAsSection.Remove(s);//将某课程的排课情况从列表中删除
-          Console.WriteLine(s + "已经从选课列表中删除");
+  public void CancelSection(Section sec)
+    {
+        int index = -1;
+        if (OfferedAsSection.Contains(sec))
+        {
 
-      }
-      
+            for (int i = 0; i < OfferedAsSection.Count; i++)
+            {
+                if (OfferedAsSection[i] == sec)
+                {
+                    //根据选课取得索引
+                    index = i;
+                    break;
+                }
+            }
+               OfferedAsSection.RemoveAt(index);
+                Console.WriteLine(sec + "这门课程已经移除！");}
+           
+            else
+            {
+                Console.WriteLine(sec + "这门课程不存在！");
+            }
+     }
 
-  }
+
+  
 }

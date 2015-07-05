@@ -115,7 +115,7 @@ namespace SRSDEMO.UI
             scheduleOfClasses.AddSection(sec5);
             scheduleOfClasses.AddSection(sec6);
             scheduleOfClasses.AddSection(sec7);
-          c1.CancelSection(sec1);
+          c1.CancelSection(sec1);//测试第四题，删除课程
 
             //设定每门课的教师
             // Recruit a professor to teach each of the sections.
@@ -212,7 +212,7 @@ namespace SRSDEMO.UI
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
            sec7.PostGrade(s2, "A-");
-           sec7.EraseGrade(s2, "A");//测试更改学生成绩
+           sec7.EraseGrade(s2, "A+");//测试更改学生成绩，第六题 
 
            //Console.WriteLine("");
            //s2.Display();
