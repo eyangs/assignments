@@ -109,8 +109,10 @@ public class Section {
         // See if the Student's Transcript reflects
         // successful completion of the prerequisite.
 
-        if (!transcript.VerifyCompletion(pre)) {
-          return EnrollFlags.PREREQ_NOT_SATISFIED;
+                                                                          //练习五 添加判断，看是否选修了该课程 
+          if (!transcript.VerifyCompletion(pre) || this.IsSectionOf(pre))
+          {
+              return EnrollFlags.PREREQ_NOT_SATISFIED;
         }
       }
     }
@@ -276,7 +278,21 @@ public class Section {
 
     return true;
   }
-	
+
+                                                                                 //练习6，修改成绩
+  public void EraseGrade(Student s, string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == true)
+      {
+          s.Transcript.TranscriptEntries.Remove(AssignedGrades[s]);
+
+          AssignedGrades.Remove(s);
+
+          TranscriptEntry te = new TranscriptEntry(s, grade, this);
+
+          AssignedGrades.Add(s, te);
+      }
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {
