@@ -36,6 +36,7 @@ public class Course {
   public double Credits { get; set; }
   public List<Section> OfferedAsSection { get; set; }
   public List<Course> Prerequisites { get; set; }
+  public static int SectionNumber { get; set; } 
 
   //-----------------------------
   // Miscellaneous other methods.
@@ -77,7 +78,11 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+     //确保一门课程不能把增加设为先修课程
+      if (c.CourseNumber != this.CourseNumber)
+      {
+            Prerequisites.Add(c);
+      }    
   }
 
   //**************************************
@@ -93,11 +98,12 @@ public class Course {
 
   //******************************************************************
   //
-  public Section ScheduleSection(string day, string time, string room,
+  //练习四  在course类定义静态变量SectionNumber，改正逻辑错误
+    public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    Section s = new Section(OfferedAsSection.Count + 1, 
+    Section s = new Section(SectionNumber + 1, 
 				day, time, this, room, capacity);
 		
     // ... and then add it to the List
@@ -105,4 +111,10 @@ public class Course {
 		
     return s;
   }
+    //练习四 增加一个取消section方法 
+    public bool CancelSection(Section s)
+    {
+        this.OfferedAsSection.Remove(s);
+        return true;
+    }
 }
