@@ -107,9 +107,19 @@ public class Professor : Person {
   //**************************************
   //
   public void AgreeToTeach(Section s) {
-    Teaches.Add(s);
-
+      int jieguo; //第三题
+      bool status;
+      status = true;
+      for (int i = 0; i < Teaches.Count; i++)
+      { 
+          jieguo  = String.Compare(s.TimeOfDay,Teaches[i].TimeOfDay);
+         if(jieguo ==0)
+         { status = false; Console.WriteLine(s +"和" +Teaches[i]+"时间冲突"); break; }
+         
+      }
+      if (status == true) { Teaches.Add(s); s.Instructor = this; }
+     
     // We need to link this bidirectionally.
-    s.Instructor = this;
+   
   }
 }

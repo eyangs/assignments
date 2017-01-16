@@ -61,6 +61,16 @@ public class Transcript {
   //****************************************************
   //
   public void AddTranscriptEntry(TranscriptEntry te) {
+      //第六题，修改成绩，应在此处增加判断，防止实例化TranscriptEntry 直接又添加一次成绩
+      foreach (var e in TranscriptEntries)
+      {
+          if (e.Student.Equals(te.Student) && e.Section.Equals(te.Section))
+          {
+              e.Grade = te.Grade;
+              return;
+          }
+      }
+
     TranscriptEntries.Add(te);
   }
 

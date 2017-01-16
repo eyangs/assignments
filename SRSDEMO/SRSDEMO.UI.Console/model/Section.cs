@@ -39,7 +39,7 @@ public class Section {
   public int SectionNumber { get; set; }
   public string DayOfWeek { get; set; }
   public string TimeOfDay { get; set; }
-  public Professor Instructor { get; set; }
+  public Professor Instructor { get; set; } 
   public Course RepresentedCourse { get; set; }
   public string Room { get; set; }
   public int SeatingCapacity { get; set; }
@@ -114,7 +114,7 @@ public class Section {
         }
       }
     }
-		
+	
     // If the total enrollment is already at the
     // the capacity for this Section, we reject this 
     // enrollment request.
@@ -122,7 +122,23 @@ public class Section {
     if (!ConfirmSeatAvailability()) {
       return EnrollFlags.SECTION_FULL;
     }
-		
+    
+//第五题 选修某课程，他有先修课程，在他之前已选的课程中查看是否有他的先修课程。
+//    if (c.HasPrerequisites())
+//    {
+//     for (int i = 0; i < c.Prerequisites.Count;i++)//查询先修课程
+//        {         
+//          for( int j = 0; j<c.RepresentedCourse.Count;j++)//选课查询之前
+//         if (Prerequisites[i]=RepresentedCourse[j])
+//            {
+//                return EnrollFlags.PREREQ_and_now  ;
+//            }
+//        }
+//    }
+
+
+
+
     // If we made it to here in the code, we're ready to
     // officially enroll the Student.
 
@@ -133,6 +149,9 @@ public class Section {
     EnrolledStudents.Add(s.Id, s);
     s.AddSection(this);
     return EnrollFlags.SUCCESSFULLY_ENROLLED;
+
+
+
   }
 	
   //**************************************
@@ -240,8 +259,31 @@ public class Section {
     }
 
     return grade;
-  }
+  } 
 
+
+
+//第六题
+  public bool EraseGrade(Student s,string grade) {
+      if (AssignedGrades.ContainsKey(s))
+      {
+          AssignedGrades.Remove(s);
+
+          
+           //把旧的成绩删掉，添加新成绩。
+          TranscriptEntry te = new TranscriptEntry(s, grade, this);
+          AssignedGrades.Add(s, te);
+         
+          //s.AddSection(this);
+         
+          return true;
+          
+      }
+      else { return false; 
+     
+      }
+  
+  }
   //************************************************
   //
   public bool PostGrade(Student s, string grade) {
