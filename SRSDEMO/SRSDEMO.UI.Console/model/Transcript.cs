@@ -7,84 +7,95 @@
 using System;
 using System.Collections.Generic;
 
-public class Transcript {
+public class Transcript
+{
 
-  //----------------
-  // Constructor(s).
-  //----------------
+    //----------------
+    // Constructor(s).
+    //----------------
 
-  public Transcript(Student s) {
-    StudentOwner = s;
+    public Transcript(Student s)
+    {
+        StudentOwner = s;
 
-    // Create an empty List.
+        // Create an empty List.
 
-    TranscriptEntries = new List<TranscriptEntry>();
-  }
+        TranscriptEntries = new List<TranscriptEntry>();
+    }
 
-  //-----------------------------
-  // Auto-implemented property.
-  //-----------------------------
+    //-----------------------------
+    // Auto-implemented property.
+    //-----------------------------
 
-  public Student StudentOwner { get; set; }
-  public List<TranscriptEntry> TranscriptEntries { get; set; }
+    public Student StudentOwner { get; set; }
+    public List<TranscriptEntry> TranscriptEntries { get; set; }
 
-  //-----------------------------
-  // Miscellaneous other methods.
-  //-----------------------------
+    //-----------------------------
+    // Miscellaneous other methods.
+    //-----------------------------
 
-  public bool VerifyCompletion(Course c) {
-    bool outcome = false;
+    public bool VerifyCompletion(Course c)
+    {
+        bool outcome = false;
 
-    // Step through all TranscriptEntries, looking for one
-    // which reflects a Section of the Course of interest.
+        // Step through all TranscriptEntries, looking for one
+        // which reflects a Section of the Course of interest.
 
-    foreach ( TranscriptEntry te in TranscriptEntries ) {
-      Section s = te.Section;
+        foreach (TranscriptEntry te in TranscriptEntries)
+        {
+            Section s = te.Section;
 
-      if ( s.IsSectionOf(c) ) {
-        // Ensure that the grade was high enough.
+            if (s.IsSectionOf(c))
+            {
+                // Ensure that the grade was high enough.
 
-        if ( TranscriptEntry.PassingGrade(te.Grade) ) {
-          outcome = true;
+                if (TranscriptEntry.PassingGrade(te.Grade))
+                {
+                    outcome = true;
 
-          // We've found one, so we can afford to
-          // terminate the loop now.
+                    // We've found one, so we can afford to
+                    // terminate the loop now.
 
-          break;
+                    break;
+                }
+            }
         }
-      }
+
+        return outcome;
     }
 
-    return outcome;
-  }
-
-  //****************************************************
-  //
-  public void AddTranscriptEntry(TranscriptEntry te) {
-    TranscriptEntries.Add(te);
-  }
-
-  //**************************************
-  //
-  public void Display() {
-    Console.WriteLine("Transcript for:  " +
-                       this.StudentOwner.ToString());
-
-    if ( TranscriptEntries.Count == 0 ) {
-      Console.WriteLine("\t(no entries)");
-    }  
-    else {
-      foreach ( TranscriptEntry te in TranscriptEntries ) {
-        Section sec = te.Section;
-        Course c = sec.RepresentedCourse;
-        ScheduleOfClasses soc = sec.OfferedIn;
-
-        Console.WriteLine("\tSemester:        "+soc.Semester);
-        Console.WriteLine("\tCourse No.:      "+c.CourseNumber);
-        Console.WriteLine("\tCredits:         "+c.Credits);
-        Console.WriteLine("\tGrade Received:  "+te.Grade);
-        Console.WriteLine("\t-----");
-      }
+    //****************************************************
+    //
+    public void AddTranscriptEntry(TranscriptEntry te)
+    {
+        TranscriptEntries.Add(te);
     }
-  }
+
+    //**************************************
+    //
+    public void Display()
+    {
+        Console.WriteLine("Transcript for:  " +
+                           this.StudentOwner.ToString());
+
+        if (TranscriptEntries.Count == 0)
+        {
+            Console.WriteLine("\t(no entries)");
+        }
+        else
+        {
+            foreach (TranscriptEntry te in TranscriptEntries)
+            {
+                Section sec = te.Section;
+                Course c = sec.RepresentedCourse;
+                ScheduleOfClasses soc = sec.OfferedIn;
+
+                Console.WriteLine("\tSemester:        " + soc.Semester);
+                Console.WriteLine("\tCourse No.:      " + c.CourseNumber);
+                Console.WriteLine("\tCredits:         " + c.Credits);
+                Console.WriteLine("\tGrade Received:  " + te.Grade);
+                Console.WriteLine("\t-----");
+            }
+        }
+    }
 }
