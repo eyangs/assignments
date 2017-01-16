@@ -92,6 +92,35 @@ public class Course {
   }
 
   //******************************************************************
+
+  //题2：确保一门课程不能把自己设为先修课程  
+  public void AddPrerequisite(Course c)
+  {
+      if (this != c)
+      {
+          Prerequisites.Add(c);
+      }
+      else
+      {
+          Console.WriteLine("课程本身不能是自己的先修课！！！");
+      }
+
+  }
+
+  //题4
+  //实现一个CancelSection方法
+  public void CancelSection(Section s)
+  {
+      //课程被移除
+      OfferedAsSection.Remove(s);
+      //选课项被移除
+      s.OfferedIn.SectionsOffered.Remove(s.RepresentedCourse.CourseNumber +
+                 " - " + s.SectionNumber);
+
+      Console.WriteLine("课程已经被移出选课表！");
+
+  }
+  //保证不出现重复的Section编号
   //
   public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {

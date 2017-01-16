@@ -61,6 +61,15 @@ public class Transcript {
   //****************************************************
   //
   public void AddTranscriptEntry(TranscriptEntry te) {
+      foreach (var e in TranscriptEntries)
+      {
+          if (e.Student.Equals(te.Student) && e.Section.Equals(te.Section))
+          {
+              e.Grade = te.Grade;
+              return;
+          }
+
+      }
     TranscriptEntries.Add(te);
   }
 

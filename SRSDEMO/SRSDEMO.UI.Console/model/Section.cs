@@ -287,4 +287,18 @@ public class Section {
       return false;
     }
   }
-}
+  //题6：教授能够修改成绩
+  public bool EraseGrade(Student s, string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == false)
+      {
+          return false;
+      }
+
+          TranscriptEntry te = new TranscriptEntry(s, grade, this);
+          AssignedGrades[s] = te;
+          return true;
+      }
+  }
+
+
