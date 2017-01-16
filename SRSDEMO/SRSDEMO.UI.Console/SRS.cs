@@ -9,7 +9,7 @@ namespace SRSDEMO.UI
     {
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
-                         new ScheduleOfClasses("SP2009");
+                         new ScheduleOfClasses("009");
         public static ScheduleOfClasses scheduleOfClasses1 =
                          new ScheduleOfClasses("SM2009");
         //教授、学生、课程列表
