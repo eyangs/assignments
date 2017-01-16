@@ -203,8 +203,11 @@ namespace SRSDEMO.UI
             //此处模拟学期结束教授给学生打分
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
-
-            sec1.PostGrade(s1, "C+");
+            
+            //练习1
+            //修改S1的成绩
+            //sec1.PostGrade(s1, "C+");
+            sec1.PostGrade(s1, "G");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
@@ -255,9 +258,70 @@ namespace SRSDEMO.UI
 
 
             //题4：
+            
+            //练习1
+            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            
+            
+            // 通过调用Course对象的ScheduleSection方法生成一个Section对象，相当于给某门课建立一个排课
+
+            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
+            sec2_2 = c2.ScheduleSection("TU", "8:10 - 10:00 PM", "GOVT102", 30);
+            sec2_3 = c3.ScheduleSection("W", "8:10 - 10:00 PM", "GOVT103", 30);
+            sec2_4 = c4.ScheduleSection("TH", "8:10 - 10:00 PM", "GOVT104", 30);
+            sec2_5 = c5.ScheduleSection("F", "8:10 - 10:00 PM", "GOVT105", 30);
+
+            //将Section加入到选课列表中
+
+            scheduleOfClasses2.AddSection(sec2_1);
+            scheduleOfClasses2.AddSection(sec2_2);
+            scheduleOfClasses2.AddSection(sec2_3);
+            scheduleOfClasses2.AddSection(sec2_4);
+            scheduleOfClasses2.AddSection(sec2_5);
+
+            //设定每门课的教师
+
+            p3.AgreeToTeach(sec2_1);
+            p2.AgreeToTeach(sec2_2);
+            p1.AgreeToTeach(sec2_3);
+            p3.AgreeToTeach(sec2_4);
+            p1.AgreeToTeach(sec2_5);
+
+            Console.WriteLine("\n The second semester! \n");
 
 
+            //模拟学生第二学期选课
 
+            //将学生s1的课程c1第一学期的成绩修改为G，这代表学生s1没通过课程c1
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_2.ToString());
+
+            EnrollFlags status1 = sec2_2.Enroll(s1);
+
+            ReportStatus(status1);
+
+            Console.WriteLine("");
+
+            //学生s3的课程c1第一学期的成绩是A。课程通过，s3可以选择课程c2
+
+            Console.WriteLine("Student " + s3.Name +
+                              " is attempting to enroll in " +
+                              sec2_2.ToString());
+
+            status1 = sec2_2.Enroll(s3);
+
+            ReportStatus(status1);
+
+
+            //第二学期课表
+            Console.WriteLine("");
+            Console.WriteLine("====================");
+            Console.WriteLine("Schedule of Classes（the second semester）:");
+            Console.WriteLine("====================");
+            Console.WriteLine("");
+            scheduleOfClasses2.Display();
+          
             Console.ReadKey();
         }
 
