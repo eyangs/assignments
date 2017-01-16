@@ -43,6 +43,7 @@ public class Section {
   public Course RepresentedCourse { get; set; }
   public string Room { get; set; }
   public int SeatingCapacity { get; set; }
+
   public ScheduleOfClasses OfferedIn { get; set; }
 
   // The EnrolledStudents Dictionary stores Student object references,
@@ -84,55 +85,70 @@ public class Section {
 
   //**************************************
   //
-  public EnrollFlags Enroll(Student s) {
-    // First, make sure that this Student is not already
-    // enrolled for this Section, has not already enrolled
-    // in another section of this class and that he/she has
-    // NEVER taken and passed the course before.  
-		
-    Transcript transcript = s.Transcript;
+  public EnrollFlags Enroll(Student s)
+  {
+      // First, make sure that this Student is not already
+      // enrolled for this Section, has not already enrolled
+      // in another section of this class and that he/she has
+      // NEVER taken and passed the course before.  
 
-    if (s.IsEnrolledIn(this) || 
-        s.IsCurrentlyEnrolledInSimilar(this) ||
-        transcript.VerifyCompletion(RepresentedCourse)) {
-      return EnrollFlags.PREVIOUSLY_ENROLLED;
-    }
+      Transcript transcript = s.Transcript;
 
-    // If there are any prerequisites for this course,
-    // check to ensure that the Student has completed them.
-
-    Course c = RepresentedCourse;
-    if (c.HasPrerequisites()) {
-
-      foreach ( Course pre in c.Prerequisites ) {
-	
-        // See if the Student's Transcript reflects
-        // successful completion of the prerequisite.
-
-        if (!transcript.VerifyCompletion(pre)) {
-          return EnrollFlags.PREREQ_NOT_SATISFIED;
-        }
+      if (s.IsEnrolledIn(this) ||
+          s.IsCurrentlyEnrolledInSimilar(this) ||
+          transcript.VerifyCompletion(RepresentedCourse))
+      {
+          return EnrollFlags.PREVIOUSLY_ENROLLED;
       }
-    }
-		
-    // If the total enrollment is already at the
-    // the capacity for this Section, we reject this 
-    // enrollment request.
 
-    if (!ConfirmSeatAvailability()) {
-      return EnrollFlags.SECTION_FULL;
-    }
-		
-    // If we made it to here in the code, we're ready to
-    // officially enroll the Student.
+      // If there are any prerequisites for this course,
+      // check to ensure that the Student has completed them.
 
-    // Note bidirectionality:  this Section holds
-    // onto the Student via the Dictionary, and then
-    // the Student is given an object reference to this Section.
+      Course c = RepresentedCourse;
+      if (c.HasPrerequisites())
+      {
 
-    EnrolledStudents.Add(s.Id, s);
-    s.AddSection(this);
-    return EnrollFlags.SUCCESSFULLY_ENROLLED;
+          foreach (Course pre in c.Prerequisites)
+          {
+
+              // See if the Student's Transcript reflects
+              // successful completion of the prerequisite.
+
+              if (!transcript.VerifyCompletion(pre))
+              {
+                  return EnrollFlags.PREREQ_NOT_SATISFIED;
+              }
+          }
+      }
+      //练习五 添加判断，看是否选修了该课程  
+
+      if (!transcript.VerifyCompletion(pre) || this.IsSectionOf(pre))
+      {
+          return EnrollFlags.PREREQ_NOT_SATISFIED;
+
+
+
+
+          // If the total enrollment is already at the
+          // the capacity for this Section, we reject this 
+          // enrollment request.
+
+          if (!ConfirmSeatAvailability())
+          {
+              return EnrollFlags.SECTION_FULL;
+          }
+
+          // If we made it to here in the code, we're ready to
+          // officially enroll the Student.
+
+          // Note bidirectionality:  this Section holds
+          // onto the Student via the Dictionary, and then
+          // the Student is given an object reference to this Section.
+
+          EnrolledStudents.Add(s.Id, s);
+          s.AddSection(this);
+          return EnrollFlags.SUCCESSFULLY_ENROLLED;
+      }
   }
 	
   //**************************************
@@ -277,7 +293,20 @@ public class Section {
     return true;
   }
 	
-  //**************************************
+  //练习6,老师修改成绩
+     public void EraseGrade(Student s, string grade)  
+  {       if (AssignedGrades.ContainsKey(s) == true)  
+   {  
+         s.Transcript.TranscriptEntries.Remove(AssignedGrades[s]);  
+   
+         AssignedGrades.Remove(s);  
+  
+           TranscriptEntry te = new TranscriptEntry(s, grade, this);  
+
+          AssignedGrades.Add(s, te);  
+     }  
+   } 
+
   //
   public bool IsSectionOf(Course c) {
     if (c == RepresentedCourse) {
