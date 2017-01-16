@@ -15,7 +15,7 @@ namespace SRSDEMO.UI
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
-        public static List<Course> courseCatalog; // Generic List of Courses
+        public static List<Course> courseCatalog; // Generic List Courses
         static void Main(string[] args)
         {
             Professor p1, p2, p3;
