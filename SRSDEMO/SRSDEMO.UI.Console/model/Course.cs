@@ -30,7 +30,8 @@ public class Course {
   //-------------------------------
   // Auto-implemented properties.
   //-------------------------------
-
+  //练习4
+    public static int sectionum = 0;
   public string CourseNumber { get; set; }
   public string CourseName { get; set; }
   public double Credits { get; set; }
@@ -77,7 +78,13 @@ public class Course {
   //**************************************
   //
   public void AddPrerequisite(Course c) {
+      if (this != c){
     Prerequisites.Add(c);
+      }
+      else
+      {
+         Console.WriteLine("课程本身不能使自己的先修课");//练习2
+      } 
   }
 
   //**************************************
@@ -97,6 +104,8 @@ public class Course {
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
+    //练习4,：保证选课号不重复
+    sectionum = sectionum + 1;
     Section s = new Section(OfferedAsSection.Count + 1, 
 				day, time, this, room, capacity);
 		
@@ -105,4 +114,24 @@ public class Course {
 		
     return s;
   }
+
+
+  //练习4
+  public void CancelSection(Section s)
+  {
+      //课程从选课项里移除
+      OfferedAsSection.Remove(s);
+      //选课项从选课表里移除
+      s.OfferedIn.SectionsOffered.Remove(s.RepresentedCourse.CourseNumber +
+                 " - " + s.SectionNumber);
+
+      Console.WriteLine("课程已移出选课表！");
+
+  }
+
+
+ 
 }
+
+
+
