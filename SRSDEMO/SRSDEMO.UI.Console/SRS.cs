@@ -8,6 +8,7 @@ namespace SRSDEMO.UI
     class SRS
     {
        //课程列表
+        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
         public static ScheduleOfClasses scheduleOfClasses1 =
@@ -240,16 +241,31 @@ namespace SRSDEMO.UI
             s2.Display();
             Console.WriteLine("");
             s3.Display();
-
+            //****************************************************
+            //练习1 拓展main方法
             //练习14.2
-            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+            Section sec2_1, sec2_2;
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec2_2 = c2.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
             scheduleOfClasses1.AddSection(sec1);
             scheduleOfClasses1.AddSection(sec2);
             //题2：让s1选sec2
             EnrollFlags result = sec2_1.Enroll(s1);
+            //修改成绩
+            sec1.EraseGrade(s1, "D");
+            //选修有先修课程的学科
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_2.ToString());
 
+            status = sec2_2.Enroll(s1);
+            ReportStatus(status);
+            Console.WriteLine("Student " + s2.Name +
+                             " is attempting to enroll in " +
+                             sec2_2.ToString());
+
+            status = sec2_2.Enroll(s2);
+            ReportStatus(status);
 
             //题3：
 
@@ -257,7 +273,8 @@ namespace SRSDEMO.UI
             //题4：
 
 
-
+           //题5：
+            // 题6：
             Console.ReadKey();
         }
 
