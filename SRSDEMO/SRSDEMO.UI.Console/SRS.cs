@@ -6,7 +6,9 @@ using System.Text;
 namespace SRSDEMO.UI
 {
     class SRS
+        //lkhlkhkhkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
     {
+        kkkk
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
