@@ -192,7 +192,7 @@ public class Section {
     DisplayStudentRoster();
   }
 	
-  //**************************************
+  //************************************
   //	
   public void DisplayStudentRoster() {
     Console.Write("\tTotal of "+GetTotalEnrollment()+ 
