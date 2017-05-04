@@ -10,8 +10,8 @@ namespace SRSDEMO.UI
        //课程列表
         public static ScheduleOfClasses scheduleOfClasses =
                          new ScheduleOfClasses("SP2009");
-        public static ScheduleOfClasses scheduleOfClasses1 =
-                         new ScheduleOfClasses("SM2009");
+        public static ScheduleOfClasses scheduleOfClasses2 =
+                         new ScheduleOfClasses("AU2009");
         //教授、学生、课程列表
         public static List<Professor> faculty;    // Generic List of Professors
         public static List<Student> studentBody;  // Generic List of Students
@@ -114,6 +114,8 @@ namespace SRSDEMO.UI
             scheduleOfClasses.AddSection(sec5);
             scheduleOfClasses.AddSection(sec6);
             scheduleOfClasses.AddSection(sec7);
+            
+         
 
             //设定每门课的教师
             // Recruit a professor to teach each of the sections.
@@ -204,10 +206,13 @@ namespace SRSDEMO.UI
             // Semester is finished (boy, that was quick!).  Professors
             // assign grades.
 
-            sec1.PostGrade(s1, "C+");
+            //修改s1的成绩
+            sec1.PostGrade(s1, "F");
+            //sec1.PostGrade(s1, "B");
             sec1.PostGrade(s3, "A");
             sec2.PostGrade(s2, "B+");
             sec7.PostGrade(s2, "A-");
+           
 
             
             //使用display方法显示各个对象最终状态
@@ -242,20 +247,51 @@ namespace SRSDEMO.UI
             s3.Display();
 
             //练习14.2
-            Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
-            sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
-            //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
+           
+            Section sec21, sec22, sec23, sec24, sec25, sec26, sec27;
+            sec21 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
+            sec22 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
+            sec23 = c2.ScheduleSection("Th", "4:10 - 6:00 PM", "GOVT105", 25);
+            sec24 = c2.ScheduleSection("Tu", "6:10 - 8:00 PM", "SCI330", 25);
+            sec25 = c3.ScheduleSection("M", "6:10 - 8:00 PM", "GOVT101", 20);
+            sec26 = c4.ScheduleSection("Th", "4:10 - 6:00 PM", "SCI241", 15);
+            sec27 = c5.ScheduleSection("F", "4:10 - 6:00 PM", "ARTS25", 40);
 
+            //将section加入到第二学期选课列表中
+            scheduleOfClasses2.AddSection(sec21);
+            scheduleOfClasses2.AddSection(sec22);
+            scheduleOfClasses2.AddSection(sec23);
+            scheduleOfClasses2.AddSection(sec24);
+            scheduleOfClasses2.AddSection(sec25);
+            scheduleOfClasses2.AddSection(sec26);
+            scheduleOfClasses2.AddSection(sec27);
 
-            //题3：
+            //设定第二学期课表老师
+            p3.AgreeToTeach(sec21);
+            p2.AgreeToTeach(sec22);
+            p1.AgreeToTeach(sec23);
+            p3.AgreeToTeach(sec24);
+            p1.AgreeToTeach(sec25);
+            p2.AgreeToTeach(sec26);
+            p3.AgreeToTeach(sec27);
 
+            //题1：修改s1第一学期的成绩，变为不及格，然后申请选修有先修课的第二学期课程（sec23）
+            
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec23.ToString());
+            status = sec23.Enroll(s1);
+            ReportStatus(status);
 
-            //题4：
+            //题1：让s1选sec27
+            
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec27.ToString());  
+            status = sec27.Enroll(s1);
+            ReportStatus(status);
 
+            
 
 
             Console.ReadKey();

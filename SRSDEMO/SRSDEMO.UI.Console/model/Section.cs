@@ -84,6 +84,8 @@ public class Section {
 
   //**************************************
   //
+    //题5：更正Enroll方法，使得学生不能同时选修一门课及其先修课
+
   public EnrollFlags Enroll(Student s) {
     // First, make sure that this Student is not already
     // enrolled for this Section, has not already enrolled
@@ -109,9 +111,11 @@ public class Section {
         // See if the Student's Transcript reflects
         // successful completion of the prerequisite.
 
-        if (!transcript.VerifyCompletion(pre)) {
+          if (!transcript.VerifyCompletion(pre) || (transcript.VerifyCompletion(pre)==null))
+          {
           return EnrollFlags.PREREQ_NOT_SATISFIED;
         }
+     
       }
     }
 		
@@ -268,15 +272,25 @@ public class Section {
     // "hooking" this T.E. to the correct Transcript.)
 
     TranscriptEntry te = new TranscriptEntry(s, grade, this);
-
+    
     // Then, we add the TranscriptEntry and its associated
     // Student to the AssignedGrades Dictionary.
 
     AssignedGrades.Add(s, te);
-
-    return true;
+     return true;
   }
-	
+    //题6：创建一个EraseGrade
+  public bool EraseGrade(Student s, string grade)
+  {
+      if (AssignedGrades.ContainsKey(s) == false)
+      {
+          return false;
+      }
+      TranscriptEntry te = new TranscriptEntry(s, grade, this);
+      AssignedGrades[s] = te;
+      return true;
+  
+  }
   //**************************************
   //
   public bool IsSectionOf(Course c) {

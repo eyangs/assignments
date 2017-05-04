@@ -76,8 +76,16 @@ public class Course {
 
   //**************************************
   //
+    //题2：修改Course类的AddPrerequisite方法，不能将自己设为先修课
   public void AddPrerequisite(Course c) {
-    Prerequisites.Add(c);
+      if (this == c)
+      {
+          Console.WriteLine("不能将自己设为先修课");
+      }
+      else {
+          Prerequisites.Add(c);
+      }
+    
   }
 
   //**************************************
@@ -93,16 +101,28 @@ public class Course {
 
   //******************************************************************
   //
+    //题4：更正ScheduleSection方法,使之不出现重复的Section编号
+  public static int NumOfSection = 1;
   public Section ScheduleSection(string day, string time, string room,
 				       int capacity) {
     // Create a new Section (note the creative way in
     // which we are assigning a section number) ...
-    Section s = new Section(OfferedAsSection.Count + 1, 
-				day, time, this, room, capacity);
+      Section s = new Section(NumOfSection++, 
+	           	day, time, this, room, capacity);
+    //Section s = new Section(OfferedAsSection.Count+1, 
+	//			day, time, this, room, capacity);
 		
     // ... and then add it to the List
     OfferedAsSection.Add(s);
 		
     return s;
+  }
+
+    //题4:为course类实现一个CancelSection方法
+  public void CancelSection(string day,string time,string room,int capacity) {
+      Section s = new Section(OfferedAsSection.Count-1,
+          day,time,this,room,capacity);
+      OfferedAsSection.Remove(s);
+  
   }
 }
