@@ -241,20 +241,76 @@ namespace SRSDEMO.UI
             Console.WriteLine("");
             s3.Display();
 
-            //练习14.2
+            //练习14
+            //练习1
             Section sec2_1, sec2_2, sec2_3, sec2_4, sec2_5;
+
+            // 通过调用Course对象的ScheduleSection方法生成一个Section对象，相当于给某门课建立一个排课
+
             sec2_1 = c1.ScheduleSection("M", "8:10 - 10:00 PM", "GOVT101", 30);
-            sec2_1 = c1.ScheduleSection("W", "6:10 - 8:00 PM", "GOVT202", 30);
-            scheduleOfClasses1.AddSection(sec1);
-            scheduleOfClasses1.AddSection(sec2);
-            //题2：让s1选sec2
-            EnrollFlags result = sec2_1.Enroll(s1);
+            sec2_2 = c2.ScheduleSection("TU", "8:10 - 10:00 PM", "GOVT102", 30);
+            sec2_3 = c3.ScheduleSection("W", "8:10 - 10:00 PM", "GOVT103", 30);
+            sec2_4 = c4.ScheduleSection("TH", "8:10 - 10:00 PM", "GOVT104", 30);
+            sec2_5 = c5.ScheduleSection("F", "8:10 - 10:00 PM", "GOVT105", 30);
+
+            //将Section加入到选课列表中
+
+            scheduleOfClasses1.AddSection(sec2_1);
+            scheduleOfClasses1.AddSection(sec2_2);
+            scheduleOfClasses1.AddSection(sec2_3);
+            scheduleOfClasses1.AddSection(sec2_4);
+            scheduleOfClasses1.AddSection(sec2_5);
+
+            //设定每门课的教师
+
+            p3.AgreeToTeach(sec2_1);
+            p2.AgreeToTeach(sec2_2);
+            p1.AgreeToTeach(sec2_3);
+            p3.AgreeToTeach(sec2_4);
+            p1.AgreeToTeach(sec2_5);
 
 
-            //题3：
+            Console.WriteLine("\n The second semester! \n");
+
+            //模拟学生第二学期选课
+
+            //将学生s1的课程c1第一学期的成绩修改为E，这代表学生s1没通过课程c1
+            Console.WriteLine("Student " + s1.Name +
+                              " is attempting to enroll in " +
+                              sec2_2.ToString());
+
+            EnrollFlags status1 = sec2_2.Enroll(s1);
+
+            ReportStatus(status1);
+
+            Console.WriteLine("");
+
+            //学生s3的课程c1第一学期的成绩是A，课程通过，s3可以选择课程c2
+
+            Console.WriteLine("Student " + s3.Name +
+                              " is attempting to enroll in " +
+                              sec2_2.ToString());
+
+            status1 = sec2_2.Enroll(s3);
+
+            ReportStatus(status1);
 
 
-            //题4：
+            //第二学期课表
+            Console.WriteLine("");
+            Console.WriteLine("====================");
+            Console.WriteLine("Schedule of Classes（the second semester）:");
+            Console.WriteLine("====================");
+            Console.WriteLine("");
+            scheduleOfClasses1.Display();
+
+
+
+
+            
+
+
+           
 
 
 
